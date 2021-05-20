@@ -1,0 +1,10 @@
+__pycache__
+*/*/vendor
+*/*/*/vendor
+*/*/build
+*/*/*/release
+*/*/*/build
+*/*/*/node_modules
+*/myblog/public
+package
+server/src/bin

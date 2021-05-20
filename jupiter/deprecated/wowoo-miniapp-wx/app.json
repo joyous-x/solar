@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/index/anims",
+    "pages/detail/detail",
+    "pages/fireworks/fireworks",
+    "pages/swiper/swiper",
+    "pages/mine/mine",
+    "pages/garbage/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "wowoo(哇喔)",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息(用于垃圾分类城市)"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

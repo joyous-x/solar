@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Exhibition of the AiLab.">
+    <title>AiLab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+    <style type="text/css">
+    html, body {
+        height: 100%;
+    }
+    #page {
+        margin-top: 24px;
+        width: 100%;
+    }
+    #page .items {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 800px;
+        margin: auto;
+    }
+    #page .items .item {
+        width: calc(33% - 5.33333px);
+        margin-right: 8px;
+        margin-bottom: 8px;
+        background: #fcfcfc;
+        padding: 10px;
+        height: 86px;
+        border-radius: 3px;
+        border: 1px solid #efefef;
+        cursor: pointer;
+        transition: opacity .3s,border-color .3s;
+    }
+    #page .items .item .item-desc {
+        color: #999;
+    }
+    #page .items .item .item-title {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #footer {
+        position: fixed;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: 50px;
+            background-color: #eee;
+            z-index: 9999;
+    }
+    #footer .main_footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #eee;
+    }
+    #footer .main_footer a {
+        color: #2b303b;
+    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">AiLab</a>
+
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link btn dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="d-flex input-group w-auto">
+                <input type="search" class="form-control" placeholder="Type query" aria-label="Search"/>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="dark">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="page">
+    <div class="items">
+        <a class="item" href="./super_resolution.html" target="_blank">
+            <div class="item-title">Super Resolution</div>
+            <div class="item-desc">Super Resolution 2X</div>
+        </a>
+        <a class="item" href="./blink_eyes.html" target="_blank">
+            <div class="item-title">Blinking</div>
+            <div class="item-desc">对真人的静态图片眨眼</div>
+        </a>
+    </div>
+</div>
+<div id="footer">
+    <div class="main_footer">
+        <a herf="">粤ICP备xxxxxx号</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<scroll-view scroll-y="true" style="height:{{scrollH}}px" bindscrolltolower="loadImages">
+  <view class="anims" style="width:100%;">
+    <view class="anim_item">
+      <view wx:for="{{cola}}" wx:key="id" class="item_info" data-id="{{item.id}}" bindtap="clickOnContItem">
+        <image src="{{item.imageurl}}" style="width:{{item.width}}px;height:{{item.height}}px;margin:3px"></image>
+        <view class="item_name">
+          <view class="item_name_cn">{{item.name_cn}}</view>
+          <view class="item_name_en">{{item.name_en}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="anim_item">
+      <view wx:for="{{colb}}" wx:key="id" class="item_info" data-id="{{item.id}}" bindtap="clickOnContItem">
+        <image src="{{item.imageurl}}" style="width:{{item.width}}px;height:{{item.height}}px;margin:3px"></image>
+        <view class="item_name">
+          <view class="item_name_cn">{{item.name_cn}}</view>
+          <view class="item_name_en">{{item.name_en}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="viewBg" >
+    <image class="imgBg" src="{{animsImgBg}}" mode="aspectFill"></image>
+</view>
+
+<view style="display:none">
+  <image wx:for="{{loadingImages}}" wx:key="id" id="{{item.id}}" src="{{item.imageurl}}" bindload="onImageLoad"></image>
+</view> 
+
+<tabbar tabbar="{{tabbar}}"></tabbar>

@@ -1,0 +1,20 @@
+<navigationbar title="{{title}}" showLocation="ture" locationName="{{cityName}}"></navigationbar>
+
+<view class="container" style="height:{{containerHeight}}">
+  <view class='ipt-view'>
+    <input class='search_ipt' bindfocus="onBindInputFocus" bindinput="onBindInputInput" confirm-type="search" placeholder="请输入正确名称(包括材质)" value="{{searchText}}"/>
+    <button class='search_btn' open-type='onBindSearch' bindtap="onBindSearch" style="width: 80rpx; height: 60rpx;">
+        <image class='btnImg' src='../images/search_select.png' mode='aspectFit'></image>
+    </button>
+  </view>
+  <view class='ai-view'>
+    <image src='../images/camera.png' mode='aspectFit' style="width:100%" bindtap='onBindCamera' />
+    <text class='txt'>拍照识别</text>
+  </view>
+  <view class='ai-view-voice'>
+    <image src='../images/voice{{speakStatus}}.png' mode='aspectFit' style="width:100%;" bindtouchstart='onBindSpeakStart' bindtouchend='onBindSpeakEnd'></image>
+    <text class='txt'>语音识别</text>
+  </view>
+</view>
+
+<tabbar tabbar="{{tabbar}}"></tabbar>

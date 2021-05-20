@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+{% block header %}
+<title>{{ appname }} - 注册</title>
+<link rel="stylesheet" href="static/books/css/result.css">
+<link rel="stylesheet" href="static/books/css/register.css">
+{% endblock %}
+
+{% block content %}
+{% include "search_bar.html" %}
+<div class="container">
+    <div class="register center-block">
+        <h4 class="title">注册</h4>
+        <form action="" method="post" role="form" id="register">
+            <div class="input-group">
+                <input type="text" class="sign" name="nickname" placeholder="你的昵称">
+                <i class="glyphicon glyphicon-user icon"></i>
+            </div>
+            <div class="input-group">
+                <input type="text" class="sign" name="email" placeholder="你的邮箱">
+                <i class="glyphicon glyphicon-envelope icon"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" class="sign" name="password" placeholder="你的密码">
+                <i class="glyphicon glyphicon-lock icon"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" class="sign sign-last" name="password2" placeholder="确认一次" data-container="body"
+                       data-toggle="popover" data-content="">
+                <i class="glyphicon glyphicon-lock icon"></i>
+            </div>
+            <p id="errorInfo0" class="errorInfo errorHidden0">密码(>5) && 用户名(>2)</p>
+            <p id="errorInfo1" class="errorInfo errorHidden1">密码不一致</p>
+            <p id="errorInfo2" class="errorInfo errorHidden2">不能有内容为空</p>
+            <p id="errorInfo3" class="errorInfo errorHidden3">邮箱格式错误</p>
+        </form>
+        <button class="btn btn-success btnRegistSubmit">注册</button>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="static/books/js/register.js"></script>
+{% endblock %}

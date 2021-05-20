@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">floatwin</string>
+
+    <string name="hello_world">this is my floatwin</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="openfloatwin">打开悬浮窗 (open )</string>
+    <string name="closefloatwin">关闭悬浮窗(close)</string>
+
+    <string name="strPicDesc">i am a float window~</string>
+    <string name="title_activity_interact_with_service">InteractWithService_Activity</string>
+    <string name="startactivity_interactwithservice">start activity---interact with service</string>
+
+    <string name="floatwin_startservice">start service</string>
+    <string name="floatwin_stopservice">stop service </string>
+    <string name="floatwin_bindservice">bind   service</string>
+    <string name="floatwin_unbindservice">unbind service</string>
+    <string name="floatwin_back">返回(back)</string>
+    <string name="floatwin_edittext_hint">when startted, something will appear here</string>
+</resources>

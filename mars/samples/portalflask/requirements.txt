@@ -1,0 +1,7 @@
+flask==1.1.2
+schedule
+
+uvloop==0.12.2
+aiohttp==3.5.4
+requests==2.18.4
+Jinja2==2.10.1

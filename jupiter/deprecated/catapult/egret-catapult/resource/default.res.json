@@ -1,0 +1,315 @@
+{
+	"groups": [
+		{
+			"keys": "bgm-faraway_mp3,arrow.down.png,arrow.left.png,arrow.right.png,arrow.up.png,ball.png,blue.png,end.png,gear.png,green.png,pink.png,ring.png,square.once.png,square.png,trail.png,triangle.png,circle.blue.png,circle.chart.png,circle.cue.png,circle.custom.png,circle.lock.png,circle.pink.png,circle.setting.png,circle.yellow.png,dot.blue.png,dot.pink.png,dot.yellow.png,icon.back.png,icon.bulb.png,icon.diamond.png,icon.retry.png,icon.upload.png,setting.favor.png,setting.music.off.png,setting.music.png,setting.share.png,setting.voice.off.png,setting.voice.png,start.core.png,win_mp3,collide.arrow_mp3,collide.gear_mp3,collide.green_mp3,collide_mp3,collide.once_mp3,fail_mp3,tap_wav,transfer_mp3,mcs.json,mcs.png,false.png,true.png,lock.png,remind.png,cup.png,tips.png",
+			"name": "preload"
+		},
+		{
+			"keys": "loadingBG_jpg,num_fnt,num_png,loading_json",
+			"name": "loading"
+		}
+	],
+	"resources": [
+		{
+			"url": "loading/loadingBG.jpg",
+			"type": "image",
+			"name": "loadingBG_jpg"
+		},
+		{
+			"url": "loading/num.fnt",
+			"type": "font",
+			"name": "num_fnt"
+		},
+		{
+			"url": "loading/num.png",
+			"type": "image",
+			"name": "num_png"
+		},
+		{
+			"url": "loading/loading.json",
+			"type": "sheet",
+			"name": "loading_json",
+			"subkeys": "loading_bar1_png,loading_bar2_png,loading_icon_png"
+		},
+		{
+			"name": "bgm-faraway_mp3",
+			"type": "sound",
+			"url": "sounds/bgm-faraway.mp3"
+		},
+		{
+			"name": "arrow.down.png",
+			"type": "image",
+			"url": "textures/item/arrow.down.png"
+		},
+		{
+			"name": "arrow.left.png",
+			"type": "image",
+			"url": "textures/item/arrow.left.png"
+		},
+		{
+			"name": "arrow.right.png",
+			"type": "image",
+			"url": "textures/item/arrow.right.png"
+		},
+		{
+			"name": "arrow.up.png",
+			"type": "image",
+			"url": "textures/item/arrow.up.png"
+		},
+		{
+			"name": "ball.png",
+			"type": "image",
+			"url": "textures/item/ball.png"
+		},
+		{
+			"name": "blue.png",
+			"type": "image",
+			"url": "textures/item/blue.png"
+		},
+		{
+			"name": "end.png",
+			"type": "image",
+			"url": "textures/item/end.png"
+		},
+		{
+			"name": "gear.png",
+			"type": "image",
+			"url": "textures/item/gear.png"
+		},
+		{
+			"name": "green.png",
+			"type": "image",
+			"url": "textures/item/green.png"
+		},
+		{
+			"name": "pink.png",
+			"type": "image",
+			"url": "textures/item/pink.png"
+		},
+		{
+			"name": "ring.png",
+			"type": "image",
+			"url": "textures/item/ring.png"
+		},
+		{
+			"name": "square.once.png",
+			"type": "image",
+			"url": "textures/item/square.once.png"
+		},
+		{
+			"name": "square.png",
+			"type": "image",
+			"url": "textures/item/square.png"
+		},
+		{
+			"name": "trail.png",
+			"type": "image",
+			"url": "textures/item/trail.png"
+		},
+		{
+			"name": "triangle.png",
+			"type": "image",
+			"url": "textures/item/triangle.png"
+		},
+		{
+			"name": "circle.blue.png",
+			"type": "image",
+			"url": "textures/ui/circle.blue.png"
+		},
+		{
+			"name": "circle.chart.png",
+			"type": "image",
+			"url": "textures/ui/circle.chart.png"
+		},
+		{
+			"name": "circle.cue.png",
+			"type": "image",
+			"url": "textures/ui/circle.cue.png"
+		},
+		{
+			"name": "circle.custom.png",
+			"type": "image",
+			"url": "textures/ui/circle.custom.png"
+		},
+		{
+			"name": "circle.lock.png",
+			"type": "image",
+			"url": "textures/ui/circle.lock.png"
+		},
+		{
+			"name": "circle.pink.png",
+			"type": "image",
+			"url": "textures/ui/circle.pink.png"
+		},
+		{
+			"name": "circle.setting.png",
+			"type": "image",
+			"url": "textures/ui/circle.setting.png"
+		},
+		{
+			"name": "circle.yellow.png",
+			"type": "image",
+			"url": "textures/ui/circle.yellow.png"
+		},
+		{
+			"name": "dot.blue.png",
+			"type": "image",
+			"url": "textures/ui/dot.blue.png"
+		},
+		{
+			"name": "dot.pink.png",
+			"type": "image",
+			"url": "textures/ui/dot.pink.png"
+		},
+		{
+			"name": "dot.yellow.png",
+			"type": "image",
+			"url": "textures/ui/dot.yellow.png"
+		},
+		{
+			"name": "icon.back.png",
+			"type": "image",
+			"url": "textures/ui/icon.back.png"
+		},
+		{
+			"name": "icon.bulb.png",
+			"type": "image",
+			"url": "textures/ui/icon.bulb.png"
+		},
+		{
+			"name": "icon.diamond.png",
+			"type": "image",
+			"url": "textures/ui/icon.diamond.png"
+		},
+		{
+			"name": "icon.retry.png",
+			"type": "image",
+			"url": "textures/ui/icon.retry.png"
+		},
+		{
+			"name": "icon.upload.png",
+			"type": "image",
+			"url": "textures/ui/icon.upload.png"
+		},
+		{
+			"name": "setting.favor.png",
+			"type": "image",
+			"url": "textures/ui/setting.favor.png"
+		},
+		{
+			"name": "setting.music.off.png",
+			"type": "image",
+			"url": "textures/ui/setting.music.off.png"
+		},
+		{
+			"name": "setting.music.png",
+			"type": "image",
+			"url": "textures/ui/setting.music.png"
+		},
+		{
+			"name": "setting.share.png",
+			"type": "image",
+			"url": "textures/ui/setting.share.png"
+		},
+		{
+			"name": "setting.voice.off.png",
+			"type": "image",
+			"url": "textures/ui/setting.voice.off.png"
+		},
+		{
+			"name": "setting.voice.png",
+			"type": "image",
+			"url": "textures/ui/setting.voice.png"
+		},
+		{
+			"name": "start.core.png",
+			"type": "image",
+			"url": "textures/start.core.png"
+		},
+		{
+			"name": "win_mp3",
+			"type": "sound",
+			"url": "sounds/win.mp3"
+		},
+		{
+			"name": "collide.arrow_mp3",
+			"type": "sound",
+			"url": "sounds/collide.arrow.mp3"
+		},
+		{
+			"name": "collide.gear_mp3",
+			"type": "sound",
+			"url": "sounds/collide.gear.mp3"
+		},
+		{
+			"name": "collide.green_mp3",
+			"type": "sound",
+			"url": "sounds/collide.green.mp3"
+		},
+		{
+			"name": "collide_mp3",
+			"type": "sound",
+			"url": "sounds/collide.mp3"
+		},
+		{
+			"name": "collide.once_mp3",
+			"type": "sound",
+			"url": "sounds/collide.once.mp3"
+		},
+		{
+			"name": "fail_mp3",
+			"type": "sound",
+			"url": "sounds/fail.mp3"
+		},
+		{
+			"name": "tap_wav",
+			"type": "sound",
+			"url": "sounds/tap.wav"
+		},
+		{
+			"name": "transfer_mp3",
+			"type": "sound",
+			"url": "sounds/transfer.mp3"
+		},
+		{
+			"name": "mcs.json",
+			"type": "json",
+			"url": "textures/mcs.json"
+		},
+		{
+			"name": "mcs.png",
+			"type": "image",
+			"url": "textures/mcs.png"
+		},
+		{
+			"name": "false.png",
+			"type": "image",
+			"url": "textures/ui/false.png"
+		},
+		{
+			"name": "true.png",
+			"type": "image",
+			"url": "textures/ui/true.png"
+		},
+		{
+			"name": "lock.png",
+			"type": "image",
+			"url": "textures/ui/lock.png"
+		},
+		{
+			"name": "remind.png",
+			"type": "image",
+			"url": "textures/ui/remind.png"
+		},
+		{
+			"name": "cup.png",
+			"type": "image",
+			"url": "textures/ui/cup.png"
+		},
+		{
+			"name": "tips.png",
+			"type": "image",
+			"url": "textures/ui/tips.png"
+		}
+	]
+}

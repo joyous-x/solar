@@ -1,0 +1,37 @@
+.maskModal{
+    width: 96%;
+    height: 96%;
+    position: fixed;
+    top: 0;
+    left: 2%;
+    border: solid 1px cyan;
+    z-index: 100;
+    background-color: #fff;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item_img{
+    width: 100%;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px red;
+}
+
+.item_name{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px red;
+}
+.item_name .item_name_cen{
+    text-align:center;
+    font:15px/20px arial,sans-serif;
+}
+.item_name .item_img_index{
+    text-align:center;
+    font:italic 12px/20px arial,sans-serif;
+}

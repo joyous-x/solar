@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    repositories {
+        // method1, system will search dependencies in local directory libs
+        // ???
+        flatDir {
+            dirs 'libs'
+        }
+
+        mavenCentral()
+
+        maven {
+            url "http://repo1.maven.org/maven2/com/alibaba/fastjson"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // method2, use lib in local directory: libs
+    // compile fileTree(include: ['*.jar'], dir: 'libs')
+    // method3, use local lib
+    compile files('libs/fastjson-1.1.22.jar')
+    // method4, use maven lib
+    // compile 'com.alibaba:fastjson:1.2.11'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+}

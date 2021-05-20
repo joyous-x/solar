@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testtaskmode">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <activity android:name=".TestTaskMode" />
+        <activity
+            android:name=".ActivityB"
+            android:launchMode="singleInstance" />
+        <activity android:name=".ActivityC" />
+
+        <meta-data
+            android:name="testTaskMode"
+            android:value="com.example.testtaskmode.ModuleEntry" />
+
+    </application>
+
+</manifest>

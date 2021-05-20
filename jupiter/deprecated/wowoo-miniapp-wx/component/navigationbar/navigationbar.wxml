@@ -1,0 +1,17 @@
+<view class="navbar" style="height: {{navigationBarHeight}}">
+  <view style="height: {{statusBarHeight}}"></view>
+  <view class='title-container'>
+    <view class='capsule' wx:if="{{ showBack || showLocation }}">
+      <view bindtap='bindBack' wx:if="{{showBack}}">
+        <image src='images/back.png' />
+      </view>
+      <view bindtap='bindLocation' wx:if="{{showLocation}}" style="display:flex; flex-direction:row;">
+        <image src='images/location.png' mode='aspectFill'></image>
+        <text style="font-size: 26rpx; position:relative; left: 50%">{{ locationName }}</text>
+      </view>
+    </view>
+    <view class='title'>{{title}}</view>
+  </view>
+</view>
+
+<view style="height: {{navigationBarHeight}}; background: white;" />

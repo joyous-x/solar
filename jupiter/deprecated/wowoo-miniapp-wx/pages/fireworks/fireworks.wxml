@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="canvas_container" style='width:100%; height:100%;' bindtap="touchHandler">
+    <canvas style='width:{{canvasWidth}}px; height:{{canvasHeight}}px; position: absolute; left: 0; top: 0; z-index: 0;' disable-scroll='true' canvas-id="bg"></canvas>
+    <canvas style='width:{{canvasWidth}}px; height:{{canvasHeight}}px; position: absolute; left: 0; top: 0; z-index: 1;' disable-scroll='true' canvas-id="fall"></canvas>
+    <canvas style='width:{{canvasWidth}}px; height:{{canvasHeight}}px; position: absolute; left: 0; top: 0; z-index: 2;' disable-scroll='true' canvas-id="firework"></canvas>
+
+    <view class="switch_container">
+        <!--正面的框  -->
+        <view class="switch on" animation="{{animationSwitchMain}}" bindtap="rotateSwitchFn" data-id="1" >
+            <image src="{{musicSwitchOnImg}}" mode="aspectFit"></image>
+        </view>
+        <!--背面的框  -->
+        <view class="switch off" animation="{{animationSwitchBack}}"  bindtap="rotateSwitchFn" data-id="2">
+            <image src="{{musicSwitchOffImg}}" mode="aspectFit"></image>
+        </view>
+    </view>
+</view>
+
+
+<view class="viewBg" >
+    <image class="imgBg" src="{{bgImg}}" mode="aspectFill"></image>
+</view>
+
+<tabbar tabbar="{{tabbar}}"></tabbar>

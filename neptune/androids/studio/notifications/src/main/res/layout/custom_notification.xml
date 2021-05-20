@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/custom_notification_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
+
+    <RelativeLayout
+        android:id="@+id/custom_notification_title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/custom_notification_icon"
+        android:gravity="center">
+        <LinearLayout
+            android:id="@+id/custom_notification_button_layout"
+            style="@style/notification_linear_scale"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/custom_notification_btn_prev"
+                style="@style/custom_btn_style"
+                android:src="@drawable/btn_prev" />
+            <ImageButton
+                android:id="@+id/custom_notification_btn_start"
+                style="@style/custom_btn_style"
+                android:src="@drawable/btn_play" />
+            <ImageButton
+                android:id="@+id/custom_notification_btn_next"
+                style="@style/custom_btn_style"
+                android:src="@drawable/btn_next" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/notification_linear_scale"
+            android:layout_toLeftOf="@id/custom_notification_button_layout"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/custom_notification_title"
+                android:text="title"
+                style="@style/notification_textview_title" />
+            <TextView
+                android:id="@+id/custom_notification_content"
+                android:text="content"
+                style="@style/notification_textview"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/custom_notification_process_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/custom_notification_icon"
+        android:layout_below="@id/custom_notification_title_layout" >
+        <TextView
+            android:id="@+id/custom_notification_process_status"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="10%"
+            style="@style/notification_textview" />
+        <ProgressBar
+            android:id="@+id/custom_notification_progressbar"
+            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/custom_notification_process_status" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="setting"
+    android:title="软件设置">
+    <PreferenceCategory
+        android:key="basic"
+        android:title="基本设置" >
+        <EditTextPreference
+            android:key="nickName"
+            android:title="昵称"
+            android:defaultValue="机器人" />
+        <CheckBoxPreference
+            android:key="nightMode"
+            android:title="夜间模式"
+            android:summaryOn="已启动"
+            android:summaryOff="未启动" />
+        <ListPreference
+            android:key="textSize"
+            android:title="文字大小"
+            android:dialogTitle="文字大小"
+            android:entries="@array/textSize_entry"
+            android:entryValues="@array/textSize_entry_value"
+            android:defaultValue="0" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="clean"
+        android:title="清除记录">
+        <Preference
+            android:key="cleanHistory"
+            android:title="清除历史记录" />
+    </PreferenceCategory>
+</PreferenceScreen>

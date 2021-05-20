@@ -1,0 +1,32 @@
+<!--mine.wxml-->
+<view class="container">
+    <view class="viewBg" >
+        <image class="imgBg" src="{{imgBg}}" mode="aspectFill"></image>
+    </view>
+    <view class="obtUserinfoView" wx:if="{{!hasUserInfo && canIUse}}">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击授权获取更多内容 </button>
+    </view>
+    <view class="contInfoView" wx:else>
+        <view class="userinfo">
+            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击授权获取更多内容 </button>
+            <block wx:else>
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </block>
+        </view>
+        <view class="viewSelect">
+            <view class="viewSelectDesc">
+                <text class="txtDescribeA">{{txtDescribeA}}</text>
+                <text class="txtDescribeB">{{txtDescribeB}}</text>
+                <button class="btnRefresh" bindtap="tapRefresh" disabled="{{refreshBtnDisable}}">
+                    <image class="imgRefresh" src="{{imgRefresh}}" mode="aspectFit"></image>
+                    <text class="txtRefresh">换一下</text>
+                </button>
+            </view>
+            <view class="viewSelectImg">
+                <image class="imgSelect" src="{{imgSelect}}" mode="aspectFit"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<tabbar tabbar="{{tabbar}}"> </tabbar>

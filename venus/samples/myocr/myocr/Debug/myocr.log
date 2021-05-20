@@ -1,0 +1,15 @@
+﻿  ADetectorWhite.cpp
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(91,20): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(94,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(105,28): warning C4244: “=”: 从“_Ty”转换到“int”，可能丢失数据
+          with
+          [
+              _Ty=float
+          ]
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(114,26): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(137,57): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(142,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(185,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(307,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\Workspace\solar\venus\myocr\myocr\aim\ADetectorWhite.cpp(310,26): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  myocr.vcxproj -> D:\Workspace\solar\venus\myocr\Debug\myocr.exe

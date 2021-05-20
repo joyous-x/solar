@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+{% block header %}
+<title>donate - {{appname}}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="donate">
+        <p> <strong>如果 {{appname}} 给您带来了愉悦的心情，请我们一起努力让它活下去，越活越好：</strong></p>
+        <ul>
+            <li>服务器、域名的费用</li>
+            <li>一杯为辛勤劳作而支援的咖啡</li>
+        </ul>
+        <p>请扫一扫微信支付(希望留言中带上你的名字, {{ appname }} 铭记你的贡献)：</p>
+        <p>
+            <img class="img_wxpaycode" src='https://ws1.sinaimg.cn/large/007i3XCUgy1fydjg9e5fsj30lq0lmgoj.jpg' width="300px" height="300px"/>
+        </p>
+    </div>
+    <div class="ego_wall">
+        <p><strong>荣誉墙(按照时间排序)：</strong></p>
+        <br>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

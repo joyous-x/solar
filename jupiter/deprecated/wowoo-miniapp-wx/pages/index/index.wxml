@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container" animation="{{indexOutAnim}}">
+    <view class="bg-wrapper">
+        <image class="indexBgCover" src="{{indexBgCover}}" mode="scaleToFill" bindtap="jumpToAnims"></image>
+    </view>
+</view>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "748844148316",
+    "firebase_url": "https://statussaver-b5834.firebaseio.com",
+    "project_id": "statussaver-b5834",
+    "storage_bucket": "statussaver-b5834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748844148316:android:519126de1d372acd63a899",
+        "android_client_info": {
+          "package_name": "com.joyous.catapult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748844148316-bmpmar1rmuec4kh4non566r6dq25oaa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRVn0L9es8MVspuB-GTgQy0L6u83c-qL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748844148316-bmpmar1rmuec4kh4non566r6dq25oaa8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748844148316:android:151a9825d8e6432f63a899",
+        "android_client_info": {
+          "package_name": "com.tapeasy.statussaverforwhatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748844148316-bmpmar1rmuec4kh4non566r6dq25oaa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRVn0L9es8MVspuB-GTgQy0L6u83c-qL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748844148316-bmpmar1rmuec4kh4non566r6dq25oaa8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

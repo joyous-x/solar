@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+{% block header %}
+<title> {{appname}} - {{bname}}</title>
+<link rel="stylesheet" href="static/books/css/cplist.css">
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-warning center-block">
+    <p class="close" data-dismiss="alert">&times;</p>
+    <p style="text-align: center">
+        <strong>声明！</strong>本站不储存任何内容，只是通过二次解析实现更好的阅读体验。若有侵犯之处，请通知我们进行删除
+    </p>
+    <p style="text-align: center">
+        <strong>原页面为&nbsp</strong><a target="_blank" href="{{url}}">{{url}}</a>
+    </p>
+</div>
+
+<div class="container all-chapter">
+    <input id="cphost" type="hidden" value="{{cphost}}">
+    <input id="url" type="hidden" value="{{url}}">
+    <input id="bname" type="hidden" value="{{bname}}">
+    <input id="cptype" type="hidden" value="{{cptype}}">
+    <input id="cpscheme" type="hidden" value="{{cpscheme}}">
+    {% for item in contents -%}
+    {{item|safe}}
+    {%- endfor %}
+    <div class="move">
+        <div class="move_up">
+            <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+        </div>
+        <div class="move_down">
+            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="static/books/js/cplist.js"></script>
+{% endblock %}
+
+

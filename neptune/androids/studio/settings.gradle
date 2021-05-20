@@ -1,0 +1,7 @@
+include ':app', ':testViewAnimator', ':testFastJson', ':testTaskMode', ':testbroadcastreceiver', ':testService', ':testContentProvider', ':testIntent', ':testXML', ':testPreferenceActivity', ':testAsyncTask', ':testCrashHandler', ':testJunit', ':testAutotestSysCamera', ':testAutotestSelfApk', ':testJNI', ':testViewPager'
+include ':floatwin'
+include ':notifications'
+include ':animations'
+include ':testTaskMode'
+include ':testFastJson'
+include ':testViewAnimator'

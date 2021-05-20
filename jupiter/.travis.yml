@@ -1,0 +1,46 @@
+language: node_js
+node_js:
+  - stable
+
+
+git:
+  submodules: true
+
+
+before_install:
+  - git submodule update --init --remote --recursive
+install:
+  - npm install
+
+script:
+  - cd ./website/myblog && hexo g
+after_script: 
+  - cd ./website/myblog/public  
+  - git init  
+  - git config user.name "jiao"  
+  - git config user.email "joyoushunter@yeah.net"  
+  - git add .
+  - git commit -m "Update docs"  
+  - git push --force --quiet "https://${GitHub_TOKEN}@${GH_REF}"
+
+
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
+
+branches:
+  only:
+  - master
+  - stable
+  except:
+  - develop
+
+env: 
+  global:
+    - GH_REF: github.com/Troy-Yang/troy-yang.github.io.git
+

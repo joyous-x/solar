@@ -1,0 +1,14 @@
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+    <view class="toolBar" style="height=100%;width=100%">
+    </view>
+</view>
+
+<view class="maskModal" wx:if="{{showModal}}" bindtap="touchHandler" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">>
+    <view class="item_img">
+        <image src="{{item_imageurl}}" mode="aspectFit"></image>
+    </view>
+    <view class="item_name">
+      <view class="item_name_cen">{{item_name_cen}}</view>
+      <view class="item_img_index">{{item_img_index}}</view>
+    </view>
+</view>

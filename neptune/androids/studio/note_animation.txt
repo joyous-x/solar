@@ -1,0 +1,39 @@
+    1、四种基础动画可以通过 xml 和 代码 两种方式实现
+        xml：放在 res 下的 anim 目录下(目录名不能变)，形如 alpha.xml 等
+        代码：参考 AnimationsActivity 中 AnimationListener 的 alpha() 等动画
+        旋转(rotate)、缩放(scale)、淡入淡出(alpha)、移动(translate)
+
+    2、轴坐标表示：
+        1）值为"50"，表示使用绝对位置定位
+        2）值为"50%"，表示使用相对于控件本身定位
+        3）值为"50%p"，表示使用相对于控件的父控件定位
+
+    3、动画叠加
+        xml: 在一个 xml 中写多种动画效果，如：把 scale 和 alpha 两种效果放在一个 xml 中
+        代码：在一个 AnimationSet 中通过 addAnimation() 添加多重动画效果
+
+    4、Interpolator
+        AccelerateDecelerateInterpolator: 在动画开始与结束的地方速率改变较慢，在中间的时候速率快
+        AccelerateInterpolator: 在动画开始的地方速率改变比较慢，然后开始加速
+        CycleInterpolator: 动画循环播放特定次数，速率改变沿正玄曲线
+        DecelerateInterpolator: 在动画开始的地方速率改变比较慢，然后开始减速
+        LinearInterpolator: 动画以均与的速率改变
+        可以针对动画set也可针对set中的单个动画设置。就是说，可以让动画set共用一个速率，也可以各自有各自的速率。
+        可以通过xml和代码方法改变。
+
+    5、LayoutAnimationController
+        1)用于为一个 Layout 里边的控件(如：ListView)，或者是一个 ViewGroup 里边的控件设置统一的动画效果
+        2)可以在 xml 文件中设置，也可以在代码当中设置
+            a、在res/anim文件夹下创建一个 anim_layout.xml 形如 工程中的 res/anim/anim_layout.xml：
+            (注意：anim_layout.xml 中的首段名为 layoutAnimation 而不是 LayoutAnimation)
+            和 alpha.xml 形如 工程中的 res/anim/alpha.xml：
+            然后，在布局中的控件声明中增加： android:layoutAnimation="@anim/anim_layout" 即可
+
+            b、创建一个 Animation anim，然后创建 LayoutAnimationController 形如：
+                LayoutAnimationController controller = new LayoutAnimationController(anim);
+                controller.setOrder(LayoutAnimationController.ORDER_NORMAL);
+                controller.setDelay(0.5f);
+            然后对控件调用 setLayoutAnimation 方法，形如：
+                listView.setLayoutAnimation(controller)
+
+    6、AnimationListener

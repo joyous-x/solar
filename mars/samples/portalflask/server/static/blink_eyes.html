@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applications</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        #upload-file {
+            padding: 4px 10px;
+            height: 20px;
+            line-height: 20px;
+            position: relative;
+            cursor: pointer;
+            color: #888;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1
+        }
+
+        #upload-file input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+
+</head>
+<script type="text/javascript">
+    var root = "";//"http://127.0.0.1:5000";
+
+    function isJsonString(str) {
+        try {
+            if (typeof JSON.parse(str) == "object") {
+                return true;
+            }
+        } catch(e) {
+        }
+        return false;
+    }
+
+    function uploadImage(file){
+        var formData = new FormData();
+        formData.set("file", file.files[0]);
+        var xhr=new XMLHttpRequest();
+        // xhr.responseType = "blob";
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.ontimeout = function(event){
+            alert('请求超时！')
+        }
+        xhr.onreadystatechange = function () {
+            if (this.readyState !== 4) {
+                document.getElementById("loading").style.visibility="";
+            } else {
+                document.getElementById("loading").style.visibility="hidden";
+            }
+        }
+        xhr.onload = function() {
+            if (this.status != 200) {
+                alert('请求失败！' + this.status)
+            } else {
+                data = this.response
+                if (this.responseType === "json" || isJsonString(data)) {
+                    var result = JSON.parse(this.responseText);
+                    if (result.msg !== "") {
+                        alert('错误：' + result.msg);
+                    } else {
+                        var download_btn = document.getElementById('download-file');
+                        download_btn.href = root + result.video;
+                        download_btn.download = result.video.substring(result.video.lastIndexOf("/")+1); ;
+                        download_btn.style.visibility="";
+                        document.getElementById("resultFile").style.visibility="hidden";
+                    }
+                    console.log("response : " + data);
+                } else {
+                    var img = document.getElementById('resultFile');
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                        document.getElementById("resultFile").style.visibility="";
+                        document.getElementById("download-file").style.visibility="hidden";
+                    }
+                    reader.readAsDataURL(data);
+                }
+            }
+        }
+        xhr.open("POST", root + "/api/blinking_anim", true);
+        xhr.send(formData);
+    }
+
+    function on_file_change(file){
+        var img = document.getElementById('uploadedFile');
+        var reader = new FileReader();
+        reader.onload = function(evt){
+            img.src = evt.target.result;
+            document.getElementById("resultVideo").style.visibility="hidden";
+            document.getElementById("resultFile").style.visibility="hidden";
+            document.getElementById("download-file").style.visibility="hidden";
+        }
+        reader.readAsDataURL(file.files[0]);
+        uploadImage(file);
+    }
+
+</script>
+<body>
+    <div align="center">
+        <h1>Applications</h1>
+        <h3>blinking eyes</h3>
+    </div>
+
+    <div align="center" >
+        <div>
+            <input id="upload-file" name="files" accept="image/*" type="file" onchange="on_file_change(this);">
+        </div>
+        <div>
+            <a id="download-file" href="" download="" style="visibility:hidden">点击下载变换结果</a>
+        </div>
+    </div>
+
+    <div id="loading" align="center" style="width:100%;height:50px;visibility:hidden">
+        <img style='height:100%;objec-fit:cover;' src='/static/loading.gif' />
+    </div>
+
+    <div align="center" display="flex" justify-content="space-around">
+        <img id="uploadedFile">　
+        <video id="resultVideo" style="width:100%;height:100%;visibility:hidden" src="" controls="controls"> </video>
+        <img id="resultFile" style="visibility: hidden">　
+    </div>
+</body>
+</html>

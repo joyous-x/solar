@@ -1,0 +1,23 @@
+悬浮窗口的实现涉及到WindowManager，它是一个接口，实现类有WindowManagerImpl，CompatModeWrapper，LocalWindowManager
+
+Activity ---HAS---> PhoneWindow ---HAS---> LocalWindowManager
+同时，Activity 也引用了 PhoneWindow 中的 LocalWindowManager 作为自己的成员。
+
+WindowManagerImpl：
+    1.是WindowManager的实现类,windowmanager的大部分操作都在这里实现，但是并不会直接调用，而是作为
+      LocalWindowManager和WindowManagerImpl.CompatModeWrapper的成员变量来使用
+
+LocalWindowManager：
+    1.父类为CompatModeWrapper，同样实现WindowManager接口
+    2.每个Activity里都会构造一个LocalWindowManger来管理该Activity承载的图层
+    3.该对象可以通过 Activity.getWindowManager 或 getWindow().getWindowManager 获取
+    4.LocalWindowMangers的生命周期小于Activity的生命周期
+
+CompatModeWrapper：
+    1.它相当于是一个壳，真正实现大部分功能的是它里面的成员变量mWindowManager(WindowManagerImpl类)
+    2.该对象可以通过getApplication().getSystemService(Context.WINDOW_SERVICE)得到。
+      (通过 activity.getSystemService(Context.WINDOW_SERVICE) 得到的是只属于 Activity 的 LocalWindowManager)
+    3.是在进程开始时, 通过ContextImpl中的静态代码块创建, 它使用了单例模式, 保证每个application只有一个
+    4.通过该类添加的窗口，是属于整个应用进程的，存活在进程生命周期，不受Activity的生命周期影响，可以用来实现悬浮窗
+    5.要获取CompatModeWrapper，需要在AndroidManifest.xml中添加权限
+      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />

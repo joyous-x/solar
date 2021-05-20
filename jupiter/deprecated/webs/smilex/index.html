@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="icon" href="image/favcion.ico" sizes="192x192" />
+  <link rel="shortcut icon" href="image/favcion.ico"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="full-screen" content="yes"><!--UC强制全屏-->
+  <meta name="browsermode" content="application"><!--UC应用模式-->
+  <meta name="x5-fullscreen" content="true"><!--QQ强制全屏-->
+  <meta name="x5-page-mode" content="app"><!--QQ应用模式-->
+  <title>Smilex小站</title>
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1230786_gdvd1b4wlz.css">
+  <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script src="js/canvas-nest.js"></script>
+    <div id="menu"><i></i></div>
+    <div class="list closed">
+        <ul>
+            <!------>
+            <li class="title"><i class="iconfont icon-youxiang"></i> 邮箱</li>
+            <li><a rel="nofollow" href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><i class="iconfont icon-gmail" style="color: #f03;"></i>Gmail</a></li>
+            <!------>
+            <li class="title"><i class="iconfont icon-msg"></i> 社交</li>
+            <li><a rel="nofollow" href="https://www.weibo.com" target="_blank"><i class="iconfont icon-weibo" style="color: #e6162d;"></i>微博</a></li>
+            <li><a rel="nofollow" href="https://www.zhihu.com/" target="_blank"><i class="iconfont icon-zhihu" style="color: #0084ff;"></i>知乎</a></li>
+        </ul>
+    </div>
+    <section class="content" id="content">
+        <div class="header">
+            <!-- http://tianqi.2345.com/plugin/ -->
+            <iframe allowtransparency="true" frameborder="0" width="255" height="88" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=2&z=2&t=1&v=0&d=1&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=255&h=88&align=center"></iframe>
+        </div>
+        <div class="search">
+            <div class="search-logo">
+                <img src="image/logo.png"></img>
+            </div>
+            <div class="search-box">
+                <button class="search-engine-name" id="search-engine-name">必应</button>
+                <input class="search-input" type="text" placeholder="请输入搜索内容" id="search-input" x-webkit-speech lang="zh-CN">
+                <button class="search-btn" id="search-btn"><i style="font-size: 20px;" class="iconfont icon-sousuo"></i></button>
+            </div>
+            <!-- 搜索引擎 -->
+            <div class="search-engine">
+                <div class="search-engine-head">
+                    <strong class="search-engine-tit">选择您的默认搜索引擎：</strong>
+                </div>
+                <ul class="search-engine-list">
+                </ul>
+            </div>
+        </div>
+        <div class="main-body">
+           <!-- 网络资讯 -->
+           <div class="box">
+               <a href="" name="operation"></a>
+               <div class="sub-category">
+                   <div><i class="iconfont icon-yunying"></i>网络资讯</div>
+               </div>
+               <div>
+                   <a target="_blank" href="https://www.zhihu.com/">
+                       <div class="item">
+                           <div class="logo"><img src="image/zhihu.ico" alt="知乎"> 知乎</div>
+                           <div class="desc">与世界分享你的知识、经验和见解与世界分享你的知识、经验和见解</div>
+                       </div>
+                   </a>
+                   <a target="_blank" href="https://www.v2ex.com/">
+                       <div class="item">
+                           <div class="logo"><img src="image/v2ex.png" alt="V2EX"> V2EX</div>
+                           <div class="desc">一个关于分享和探索的地方。</div>
+                       </div>
+                   </a>
+                   <a target="_blank" href="https://mp.weixin.qq.com/">
+                       <div class="item">
+                           <div class="no-logo">微信公众平台</div>
+                       </div>
+                   </a>
+                   <a target="_blank" href="https://www.toutiao.com/">
+                       <div class="item">
+                           <div class="no-logo">今日头条号</div>
+                       </div>
+                   </a>
+                   <a target="_blank" href="https://www.weibo.com/login.php">
+                       <div class="item">
+                           <div class="no-logo">新浪微博</div>
+                       </div>
+                   </a>
+               </div>
+           </div>
+           <!-- 开发社区 -->
+           <div class="box">
+               <a href="#" name="bbs"></a>
+               <div class="sub-category">
+                   <div><i class="iconfont icon-shequ"></i>开发社区</div>
+               </div>
+               <div>
+                   <a target="_blank" href="https://github.com/">
+                       <div class="item">
+                           <div class="logo"><img src="image/github.ico" alt="github"> github</div>
+                           <div class="desc">面向开源及私有软件项目的git托管平台</div>
+                       </div>
+                   </a>
+                   <a target="_blank" href="https://coding.net/">
+                       <div class="item">
+                           <div class="logo"><img src="image/coding.png" alt=" Coding"> Coding</div>
+                           <div class="desc">中国最大的git平台。</div>
+                       </div>
+                   </a>
+               </div>
+           </div>
+           <!-- 技术博客 -->
+           <div class="box">
+                <a href="#" name="sill"></a>
+                <div class="sub-category">
+                    <div><i class="iconfont icon-blogger"></i>技术博客</div>
+                </div>
+                <div>
+                    <a target="_blank" href="https://www.cdstm.cn/">
+                        <div class="item">
+                            <div class="no-logo">中国数字科技馆</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- 实用工具 -->
+            <div class="box">
+                <a href="" name="tools"></a>
+                <div class="sub-category">
+                    <div><i class="iconfont icon-tool"></i>实用工具</div>
+                </div>
+                <div>
+                    <a target="_blank" href="https://smilex.xyz/tax">
+                        <div class="item">
+                            <div class="no-logo">2019个税计算器</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://smilex.xyz/generator_pwd">
+                        <div class="item">
+                            <div class="no-logo">随机密码(字符串)生成器</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://dict.youdao.com/">
+                        <div class="item">
+                            <div class="logo"><img src="image/youdao.ico" alt=" youdao">有道云翻译</div>
+                            <div class="desc">有道云在线翻译</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://www.peise.net/tools/web/">
+                        <div class="item">
+                            <div class="no-logo">网页配色工具</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://www.uupoop.com/">
+                        <div class="item">
+                            <div class="no-logo">在线PS</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://dummyimage.com/">
+                        <div class="item">
+                            <div class="no-logo">动态图像生成器</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="http://xiuxiu.web.meitu.com/main.html">
+                        <div class="item">
+                            <div class="no-logo">美图秀秀在线图片处理</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://cli.im/deqr">
+                        <div class="item">
+                            <div class="no-logo">二维码在线生成</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://www.zybuluo.com/mdeditor">
+                        <div class="item">
+                            <div class="no-logo">Markdown在线编辑器</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://www.umeng.com">
+                        <div class="item">
+                            <div class="no-logo">友盟+</div>
+                            <div class="desc">国内领先的第三方全域数据智能服务商</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <a href="#" name="study"></a>
+                <div class="sub-category">
+                    <div><i class="iconfont icon-xuexi1"></i>云课堂</div>
+                </div>
+                <div>
+                    <a target="_blank" href="http://study.163.com/">
+                        <div class="item">
+                            <div class="no-logo">网易云课堂</div>
+                            <div class="desc">网易公司研发的一款大型在线教育平台服务</div>
+                        </div>
+                    </a>
+                    <a target="_blank" href="https://ke.qq.com/course/list?mt=1001">
+                        <div class="item">
+                            <div class="no-logo">腾讯课程 - IT&middot;互联网</div>
+                            <div class="desc">腾讯推出的专业在线教育平台，采用直播教学方式，适合有充裕时间学习的同学</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div>
+        <footer class="footer">
+            <div class="copyright">
+                Copyright © 2019-2020 All Rights Reserved (本站内容源自互联网，如有侵犯请联系删除相关内容。邮箱：@) 
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278076082'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278076082%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+            </div>
+        </footer>
+    </div>
+    <script>
+        $(document).ready(function() {
+            //判断窗口大小，添加输入框自动完成
+            var wid = $("body").width();
+            if (wid < 640) {
+                $(".search-input").attr('autocomplete', 'off');
+            }else{
+                $(".search-input").focus();
+            }
+            //菜单点击
+            $("#menu").click(function(event) {
+                $(this).toggleClass('on');
+                $(".list").toggleClass('closed');
+                $(".weather").toggleClass('hidden');
+            });
+            $("#content").click(function(event) {
+                $(".on").removeClass('on');
+                $(".list").addClass('closed');
+                $(".weather").removeClass('hidden');
+            });
+        });
+
+        var thisSearch = 'https://cn.bing.com/search?q=';
+        $(function(){
+            // 搜索引擎列表，样式一行五个内容，自动换行
+            var search = {
+                data: [{
+                    name: '百度',
+                    url: 'https://www.baidu.com/s?search-input='
+                }, {
+                    name: '谷歌',
+                    url: 'https://www.google.com/search?q='
+                }, {
+                    name: '必应',
+                    url: 'https://www2.bing.com/search?q='
+                }, {
+                    name: '淘宝',
+                    url: 'https://s.taobao.com/search?q='
+                }, {
+                    name: '京东',
+                    url: 'http://search.jd.com/Search?keyword='
+                }, {
+                    name: '1688',
+                    url: 'https://s.1688.com/selloffer/offer_search.htm?keywords='
+                }, {
+                    name: '知乎',
+                    url: 'https://www.zhihu.com/search?type=content&q='
+                }, {
+                    name: '微博',
+                    url: 'https://s.weibo.com/weibo/'
+                }, {
+                    name: 'Bilibili',
+                    url: 'http://search.bilibili.com/all?keyword='
+                }, {
+                    name: 'torrent kitty',
+                    url: 'https://www.torrentkitty.tv/search/'
+                }, {
+                    name: '优酷',
+                    url: 'https://so.youku.com/search_video/q_'
+                }, {
+                    name: 'GitHub',
+                    url: 'https://github.com/search?q='
+                }]
+            }
+            for(var i = 0; i < search.data.length; i++){
+                var addList = '<li>' + search.data[i].name + '</li>'
+                $('.search-engine-list').append(addList);
+                console.log("datalist contains", search.data[i].name);
+            }
+            $('.search-engine-name, .search-engine').hover(function() {
+                $('.search-engine').css('display', 'block')
+            }, function(){
+                $('.search-engine').css('display', 'none')
+            });
+            $('.search-engine-list li').click(function() {
+                var _index = $(this).index();
+                var searchNameBtn = document.getElementById("search-engine-name");
+                searchNameBtn.innerHTML = search.data[_index].name;
+                thisSearch = search.data[_index].url;
+            })
+        });
+        $('#search-input').keydown(function(ev){ // 回车键的处理
+            if(ev.keyCode==13){
+                window.open(thisSearch + $('#search-input').val())
+            }
+            $('#search-input').value = ""
+        });
+        $("#search-btn").click(function(){
+            var textValue = $('#search-input').val();
+            if(textValue != ''){
+                window.open(thisSearch + textValue)
+            }
+            $('#search-input').value = ""
+        });
+
+        /* 天气插件：api请地址：https://www.tianqiapi.com */
+    </script>
+</body>
+</html>

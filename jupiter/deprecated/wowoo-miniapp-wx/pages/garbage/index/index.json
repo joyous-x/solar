@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "垃圾分类指南",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigationbar": "../../component/navigationbar/navigationbar",
+    "tabbar": "../../tabbar/tabbar"
+  }
+}

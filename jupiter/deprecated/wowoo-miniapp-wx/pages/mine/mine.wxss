@@ -1,0 +1,127 @@
+/**index.wxss**/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.viewBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+}
+.imgBg {
+    height: 100%;
+    width: 100%;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5%;
+    left: 0;
+    height: 25%;
+    width: 100%;
+}
+
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    color: #aaa;
+}
+
+.usermotto {
+    margin-top: 20px;
+    /* font-size: medium, large, larger, .etc */
+    font-size: x-large;
+    /* font-weight: 100-900 */
+    font-weight: 400;
+    /* font-style: oblique, italic, .etc */
+    font-style: oblique;
+}
+
+.viewSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    height: 60%;
+    width: 100%;
+}
+
+.viewSelectDesc {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    height: 8%;
+}
+
+.txtDescribeA {
+    font-family: "microsoft yahei";
+    text-indent: 1em;
+}
+
+.txtDescribeB {
+    font-family: "microsoft yahei";
+    font-style: italic;
+    color: red;
+    text-indent: 1em;
+    text-decoration: underline;
+}
+
+.btnRefresh {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+}
+
+.imgRefresh {
+    height: 80%;
+    width: 30%;
+}
+
+.txtRefresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 70%;
+    font-size: small;
+}
+
+.viewSelectImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 86%;
+}
+
+.imgSelect {
+    height: 90%;
+    width: 90%;
+}

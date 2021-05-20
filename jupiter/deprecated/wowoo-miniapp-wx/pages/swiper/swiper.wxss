@@ -1,0 +1,38 @@
+page{
+    height:100%;
+    background-color:#f2cac9;
+}
+
+.swiper-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-item-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 86%; 
+    height: 80%;
+    text-align: center;
+    border-radius: 10px;
+    background-color:#f5f5f5;
+    box-shadow:0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.swiper-image {
+    width: 90%; 
+    height: 90%;
+}
+
+image.active {
+  transform: none;
+  transition: all 0.9s ease-in 0s;
+}
+
+image.quiet {
+  transform: scale(0.618);
+  transition: all 0.9s ease-in 0s;
+}

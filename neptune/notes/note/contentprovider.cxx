@@ -1,0 +1,24 @@
+ContentProvider组件在不同应用程序之间传输数据是基于匿名共享内存机制来实现的。
+因为，在应用程序进程之间以匿名共享内存的方式来传输数据效率是非常高的，因为它们之间只需要传递一个文件描述符就可以了。
+
+Android应用程序组件Content Provider中的数据更新通知机制和Android系统中的广播（Broadcast）通知机制的实现思路是相似的。
+在Android的广播机制中，首先是接收者对自己感兴趣的广播进行注册，接着当发送者发出这些广播时，接收者就会得到通知了。
+
+Content Provider中的数据监控机制与Android系统中的广播机制又有三个主要的区别：
+	一是前者是通过URI来把通知的发送者和接收者关联在一起的，而后者是通过Intent来关联的
+	二是前者的通知注册中心是由ContentService服务来扮演的，而后者是由ActivityManagerService服务来扮演的
+	三是前者负责接收数据更新通知的类必须要继承ContentObserver类，而后者要继承BroadcastReceiver类。
+之所以会有这些区别，是由于Content Proivder组件的数据共享功能本身就是建立在URI的基础之上的，因此专门针对URI来设计另外一套通知机制会更实用和方便，
+而Android系统的广播机制是一种更加通用的事件通知机制，它的适用范围会更广泛一些。
+
+ContentService的启动过程分析
+	Android系统进程 Zygote 启动时，会启动一个System进程来加载系统的一些关键服务，而ContentService就这些关键服务之一。
+	在 System 进程中，负责加载系统关键服务的类为SystemServer类，它会启动一个线程 SystemThread 来加载这些关键服务。
+	在 SystemThread 中会通过 ContentService.main(xxx) 来启动 ContentService。
+ 
+ContentProvider的数据变更通知：
+	ContentResolver.notifyChange
+	实现：frameworks/base/core/java/android/content/ContentResolver.java
+ 
+ContentService实现：frameworks/base/core/java/android/content/ContentService.java
+SystemServer实现：frameworks/base/services/java/com/android/server/SystemServer.java

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.joyous.floatwin" >
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".TestTaskMode"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".FloatWin_Service"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.joyous.floatwin.startservice" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".InteractWithService_Activity"
+            android:label="@string/title_activity_interact_with_service" >
+        </activity>
+
+        <meta-data
+            android:name="floatwin"
+            android:value="com.joyous.floatwin.ModuleEntry" />
+
+    </application>
+
+</manifest>

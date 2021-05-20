@@ -1,0 +1,11 @@
+<swiper class="swiper" autoplay indicator-dots indicator-color="#a39f99" indicator-active-color="#f49641" circular interval="2000" duration="1000" bindchange="swiperChange" style="height:{{swiperCH}}px; width= 100%;">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item class="swiper-item" bindtap="tapSwiperEvent" bindchange="chuangEvent">
+            <view class="swiper-item-image">
+                <image src="{{item}}" class="swiper-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode="aspectFit" />
+            </view>
+        </swiper-item>
+    </block>
+</swiper>
+
+<tabbar tabbar="{{tabbar}}"> </tabbar>
