@@ -13,7 +13,7 @@
 [***Python相关***](https://github.com/joyous-x/solar/tree/master/mars)
 
 ## 5 Jupiter
-[***tools集合***](https://github.com/joyous-x/solar/tree/master/jupiter)
+[***Tools集合***](https://github.com/joyous-x/solar/tree/master/jupiter)
 
 ## 6 Saturn
 [***Go相关***](https://github.com/joyous-x/saturn)
