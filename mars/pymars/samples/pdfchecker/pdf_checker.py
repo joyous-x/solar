@@ -44,6 +44,7 @@ todo:
 建议.
 1. 增加 pdf 格式检查，非法格式不操作
 2. 超过 60 页的 pdf 文件，耗时非常久(会超时失败，当然，具体耗时跟pdf内容也有关系)，，可以增加分拆动作
+3. 语言：中、英、俄、韩
 
 
 
@@ -499,7 +500,6 @@ class DocChecker(object):
 def __run_tests(pdf_dir, pdf_type, output_dir):
     files = DocChecker.walk_dir(os.path.join(pdf_dir, pdf_type), None)
     for file_path in files:
-        #file_path = "D:\\Workspace\\datasets\\pdf_convert\\raw\\pdf_to_word\\934407be8b20014d4427b4285d84e58d.pdf"
         result = DocChecker.extract_pdf(file_path, output_dir, "word_")
         if result:
             page_count, text_count, images_count, table_count = result
@@ -514,4 +514,4 @@ def __run_tests(pdf_dir, pdf_type, output_dir):
 
 
 if __name__ == "__main__":
-    __run_tests("D:\\Workspace\\datasets\\pdf_convert\\raw", "pdf_to_word", "D:\\Workspace\\datasets\\pdf_convert\\output")
+    __run_tests("D:\\Workspace\\datasets\\pdf_convert\\raw", "pdf_to_ppt", "D:\\Workspace\\datasets\\pdf_convert\\output")

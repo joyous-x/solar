@@ -1,3 +1,4 @@
 dist
 build
 pymars.egg-info
+__pycache__
