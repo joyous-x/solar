@@ -10,3 +10,7 @@ class DictObject(dict):
 
     def __setattr__(self, key, value):
         self[key] = value
+
+
+def message(*args, **kwargs):
+    print(' '.join(map(str, args)), **kwargs)  # noqa E999

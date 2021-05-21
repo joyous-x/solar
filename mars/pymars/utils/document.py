@@ -18,52 +18,28 @@ office 相关库：
 # reference
 #     https://openpyxl.readthedocs.io/en/stable/api/openpyxl.styles.fills.html
 # note:
-#     openpyxl 在插入一行时，如果后续有mergedcell，则会错乱：不能处理mergedcell的格式
-
-
-mind:
-- normal
-    + NOTE
-        - 不做 ocr，保证图片、文字、表格的位置、格式准确
-    + 元素
-        + image
-            image 个数
-            是否需要 ocr ？
-        + table
-            抽取 grid，计算 joint 的 行列 分布
-            抽取 text 计算 每行、每列 的文本相似度
-        + text
-            pdf 读取 和 doc 读取，文本相似度计算
-            格式: 可以忽略
-- scanned ：ocr (baseline ?)
-    + image
-    + table
-    + text
-
-todo:
-建议.
-1. 增加 pdf 格式检查，非法格式不操作
-2. 超过 60 页的 pdf 文件，耗时非常久(会超时失败，当然，具体耗时跟pdf内容也有关系)，，可以增加分拆动作
-3. 语言：中、英、俄、韩
-
-
-
+#     openpyxl 在插入一行时，如果后续有 mergedcell，则会错乱：不能处理mergedcell的格式
 """
 import os
 import io
 import shutil
-import numpy as np
-import PIL as pil
+import collections
 
-import zipfile
-import docx
+from .common import *
 
-import camelot
-import PyPDF2
 try:
+    import camelot
+    import PyPDF2
+except Exception as e:
+    camelot = None
+    PyPDF2 = None
+
+try:
+    import PIL as pil
     import pdfplumber
 except Exception as e:
     pdfplumber = None
+    pil = None
 
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
@@ -75,26 +51,20 @@ from pdfminer.image import ImageWriter
 import pdfminer.high_level
 import pdfminer.layout
 
-import collections
-
 from openpyxl import load_workbook, Workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
-
-
-def msg(*args, **kwargs):
-    print(' '.join(map(str, args)), **kwargs)  # noqa E999
+import zipfile
+import docx
 
 
 class CamelotWrapper(object):
     """ parse tables in pdf with Camelot
-
     reference: https://camelot-py.readthedocs.io/en/master/user/advanced.html
     """
     def __init__(self, filepath, passwd=None, pages="all", line_scale=40):
         """
         pages : str, optional (default: '1')
-            Comma-separated page numbers.
-            Example: '1,3,4' or '1,4-end' or 'all'.
+            Comma-separated page numbers. Example: '1,3,4' or '1,4-end' or 'all'.
         """
         self.filepath, self.passwd = filepath, passwd
         self.line_scale = line_scale
@@ -133,7 +103,7 @@ class CamelotWrapper(object):
         return pages_count
 
     @staticmethod
-    def split_pages(file_path, output_dir=None, pdf_passwd=None, debug=False):
+    def split_pages(file_path, page_set=None, output_dir=None, output_prefix="", pdf_passwd=None, debug=False):
         print("==> ready to split : {}".format(file_path))
         file_dir, file_name = os.path.split(file_path)
         file_name, file_suffix = os.path.splitext(file_name)
@@ -141,9 +111,11 @@ class CamelotWrapper(object):
             output_dir = file_dir
         pdf_obj = PyPDF2.PdfFileReader(file_path, strict=False)
         for pageno in range(1, pdf_obj.getNumPages()+1):
+            if page_set and pageno not in page_set:
+                continue
             pdf_writer = PyPDF2.PdfFileWriter()
             pdf_writer.addPage(pdf_obj.getPage(pageno-1))
-            with open(os.path.join(output_dir, "{}.{}{}".format(file_name,pageno,file_suffix)), 'wb') as output_pdf:
+            with open(os.path.join(output_dir, "{}{}.{}{}".format(output_prefix,file_name,pageno,file_suffix)), 'wb') as output_pdf:
                 pdf_writer.write(output_pdf)
         print("===> end: total pages {}".format(pdf_obj.getNumPages()))
         return pdf_obj.getNumPages()
@@ -168,7 +140,6 @@ class CamelotWrapper(object):
             with open(os.path.join(output_dir_path, "{}table_{}_texts.txt".format(prefix, index)), "a+") as f:
                 f.write("\n".join(lines))
         return len(tables)
-
 
 class PdfminerWrapper(object):
     """
@@ -239,16 +210,8 @@ class PdfminerWrapper(object):
                     if page_index not in images:
                         images[page_index] = list()
                     images[page_index].append(item)
-        msg('layouts_types_statistics:', ' '.join('{}:{}'.format(*tc) for tc in layouts_types_statistics.items()))
+        message('layouts_types_statistics:', ' '.join('{}:{}'.format(*tc) for tc in layouts_types_statistics.items()))
         return images
-
-
-class DictObject(dict):
-    def __getattr__(self, key):
-        return self.get(key)
-
-    def __setattr__(self, key, value):
-        self[key] = value
 
 
 class PdfPlumberWrapper(object):
@@ -388,130 +351,3 @@ class DocxWrapper(object):
                         cell_merged_map[r][c] = cell_merged_map[merged_r][merged_c]
             tables[i] = (cell_text, cell_merged_map)
         return texts, images, tables
-
-
-class DocChecker(object):
-    def __init__(self, filepath, passwd=None):
-        self.filepath, self.passwd = filepath, passwd
-        self.plumber = PdfPlumberWrapper(filepath, passwd)
-
-    @staticmethod
-    def walk_dir(file_dir, file_name):
-        files = []
-        if file_name is not None:
-            files.append(os.path.join(file_dir, file_name))
-        else:
-            for root, dirs, names in os.walk(file_dir, topdown=False):
-                for sub_name in names:
-                    files.append(os.path.join(root, sub_name))
-                for sub_dir in dirs:
-                    for ss_root, _, ss_files in os.walk(os.path.join(root, sub_dir), topdown=False):
-                        for ss_name in files:
-                            files.append(os.path.join(ss_root, ss_name))
-        return files
-
-    def pdf_layouts(self):
-        """ 获取布局中的元素信息
-        """
-        pass
-
-    def parse_pdf(self, pages: set() = None, writer=None, output_dir_root=None):
-        """ 获取 pdf 中的 texts, images, tables
-        注意：为了优化 tables 的检查时间较长的问题，先判断是否有文本，如果没有文本检出，则认为没有表格
-        """
-        texts, images, tables = dict(), dict(), dict()
-        for page_number in pages:
-            texts[page_number], images[page_number], tables[page_number] = None, None, None
-            page_data = self.plumber.parse_pdf({page_number})
-            for _, texts_images in page_data.items():
-                texts[page_number] = texts_images[0]
-                images[page_number] = texts_images[1]
-            if page_number in texts and texts[page_number] and len(texts[page_number]) > 0:
-                pdf_tables = CamelotWrapper(self.filepath, self.passwd, pages=str(page_number))
-                tables[page_number] = pdf_tables.parse_tables({page_number})
-            else:
-                tables[page_number] = None
-            if writer is not None:
-                writer(self.filepath, page_number, texts[page_number], images[page_number], tables[page_number], output_dir_root, do_record=False)
-        return texts, tables, images
-
-    def parse_docx(self, docx_path, output_dir="."):
-        texts, images, tables = DocxWrapper.extract_texts_tables(docx_path)
-        images = DocxWrapper.extract_images(docx_path, output_dir, "./tmp")
-        return texts, images, tables
-
-    def parse_xls(self):
-        templateDir = os.path.dirname(os.path.abspath(__file__))
-        wb = load_workbook(os.path.join(templateDir, "bill_template.xlsx"))
-        shPreface = wb.get_sheet_by_name(wb.sheetnames[0])
-        shDetail = wb.get_sheet_by_name(wb.sheetnames[1])
-
-        texts, grids = None, None
-        pass
-        return texts, grids
-
-    def pdf_images_need_ocr(self):
-        pass
-
-    @staticmethod
-    def record_page_info(filepath, pageno, texts, images, tables, output_dir_root, do_record=True):
-        file_dir, file_name = os.path.split(filepath)
-        file_name, file_suffix = os.path.splitext(file_name)
-
-        text_sample, images_count, table_count, text_count = "", 0, 0, 0
-        if texts:
-            text_count += len(texts.replace(' ', ''))
-            text_sample = texts[:min(text_count, 30)]
-        images_count += len(images) if images else 0
-        table_count += len(tables) if tables else 0
-        output_dir_name = "{}{}.{}.{}_{}_{}".format(file_name, file_suffix, pageno, images_count, table_count, text_count)
-        output_dir_path = os.path.join(output_dir_root, output_dir_name)
-
-        if do_record:
-            shutil.rmtree(output_dir_path, ignore_errors=True)
-            os.makedirs(output_dir_path, exist_ok=True)
-
-            with open(os.path.join(output_dir_path, "texts.txt"), "a+", encoding='utf-8') as f:
-                f.write(texts.replace(' ', ''))
-            if images:
-                PdfPlumberWrapper.record_images(images, os.path.join(output_dir_path, "images"))
-            if tables:
-                CamelotWrapper.record_tables(tables, output_dir_path)
-        print("\t page({}) has {} images {} tables, texts: {} ".format(pageno, images_count, table_count, repr(text_sample)))
-        return text_count, images_count, table_count
-
-    @staticmethod
-    def extract_pdf(file_path, target_dir, prefix=""):
-        text_count, images_count, table_count = 0, 0, 0
-        pages_count = CamelotWrapper.pages_count(file_path)
-        if pages_count is None or pages_count > 100:
-            return pages_count if pages_count else -1, -1, -1, -1
-        print("==> prepare: {} , total pages: {}".format(file_path, pages_count))
-        checker = DocChecker(file_path, None)
-        for index in range(1, 1+pages_count):
-            _text, _table, _images = checker.parse_pdf({index}, writer=DocChecker.record_page_info, output_dir_root=target_dir)
-            text_count += len(_text[index]) if _text[index] else 0
-            images_count += len(_images[index]) if _images[index] else 0
-            table_count += len(_table[index]) if _table[index] else 0
-        print("===> {} has {} words {} images {} tables".format(file_path, text_count, images_count, table_count))
-        return pages_count, text_count, images_count, table_count
-
-
-def __run_tests(pdf_dir, pdf_type, output_dir):
-    files = DocChecker.walk_dir(os.path.join(pdf_dir, pdf_type), None)
-    for file_path in files:
-        result = DocChecker.extract_pdf(file_path, output_dir, "word_")
-        if result:
-            page_count, text_count, images_count, table_count = result
-            statistics_file = os.path.join(os.path.dirname(pdf_dir), pdf_type + ".txt")
-            with open(statistics_file, "a+") as f:
-                f.write("{}, {}, {}, {}, {} \n".format(file_path, page_count, text_count, images_count, table_count))
-            target_dir = os.path.join(os.path.dirname(pdf_dir), "processed", pdf_type)
-            if not os.path.exists(target_dir) or not os.path.isdir(target_dir):
-                os.makedirs(target_dir, exist_ok=True)
-            _, file_name = os.path.split(file_path)
-            shutil.move(file_path, os.path.join(target_dir, file_name))
-
-
-if __name__ == "__main__":
-    __run_tests("D:\\Workspace\\datasets\\pdf_convert\\raw", "pdf_to_ppt", "D:\\Workspace\\datasets\\pdf_convert\\output")
