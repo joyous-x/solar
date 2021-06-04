@@ -45,9 +45,11 @@ C--> L[service: python]
     └── readme.md
 ```
 
-## Makefile
+## Package
+使用脚本 ``` env_scripts/makefile ``` 完成打包
+
 - cmdline
-    + ``` make env=dev```
+    + ``` cd env_scripts; make env=dev ```
 - features
     + generate packages for deploy
     + generate config files with private value
