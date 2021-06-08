@@ -2,7 +2,7 @@
 import time
 import random
 from typing import Any, List
-from antenna.utils.logger import mlog
+from ..utils.logger import mlog
 
 """
 框架：
@@ -25,6 +25,8 @@ class AaBase(object):
 class AaItemBase(AaBase):
     """ mini spider : item(url, etc.)
     call do() will get the content of a page which should be handled by MsParser
+    item: the url of an AaItemBase. AaRequester will use it to do request.
+    meta: user's datas can be stored in AaItemBase.meta, which will be keeped as what users saved.
     """
 
     def __init__(self, iid: str, types: str, item: Any, requester: str = None, parser: str = None, handler: str = None, meta: dict = None):

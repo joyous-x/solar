@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class SeleniumBase(object):
     def __init__(self, driver_type, proxy=None, window=(1920, 3000)):
         """
-            proxy : (type, ip, port), eg: (socks5, 101.32.14.3, 9094)
+            proxy : (type, ip, port), eg: (socks5, 10.32.14.3, 9004)
         """
         if driver_type == "chrome":
             chrome_options = self.default_chrome_options(proxy=proxy, window=window)

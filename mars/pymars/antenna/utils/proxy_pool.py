@@ -3,7 +3,7 @@ import requests
 import json
 import random
 import time
-from antenna.utils.logger import mlog as logger
+from ..utils.logger import mlog as logger
 
 class MoguProxyPool(object):
     """ ProxyPool: a simple pool of proxies from http://piping.mogumiao.com/proxy/api """
