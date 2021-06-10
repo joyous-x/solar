@@ -1,0 +1,4 @@
+include README.md
+# include *.pth
+include *.json
+include src/pymars/image/models/*/*/*.json

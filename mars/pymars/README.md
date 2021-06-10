@@ -1,5 +1,5 @@
 # pymars
-TODO
+python libraries, with which we can build all kinds of buildings on the deserted Mars.
 
 ## 1. Introduction
 common libs for web server, image process and so on

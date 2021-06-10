@@ -2,7 +2,7 @@
 import os
 from setuptools import setup, find_packages
 
-"""
+""" reference: http://kuanghy.github.io/2018/04/29/setup-dot-py
 name: 包名称
 version: 包版本
 author: 程序的作者
@@ -31,13 +31,18 @@ except Exception as e:
 
 setup(
     name="pymars",
-    version='0.0.1',
-    keywords=("pip", "flask", "image process", "ai"),
+    version='0.0.1.alpha1.1',
+    keywords=["pip", "flask", "image process", "ai"],
     description="common libs for web server, image process and so on",
     long_description=long_description,
     long_description_content_type='text/markdown',
 
-    packages=find_packages(),
+    package_dir={"": "src"},
+    packages=find_packages(where='src', exclude=(), include=('*',)),
+    # 添加静态文件的方法
+    #   1. include_package_data = True 以及 MANIFEST.in
+    #   2. package_data={ "": ["README.md", "*.json", "*.pth"], }
+    # 注：include_package_data 会使 package_data 信息无效，所以二者不要同时使用
     include_package_data=True,
     install_requires=["requests", "click", "flask>=1.1.2", "flask-cors>=3.0.10"],
     python_requires=">=3.5.0",
