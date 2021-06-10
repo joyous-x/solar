@@ -42,4 +42,4 @@ class ProxyAdapter(object):
         return count
 
 
-proxyAdapter = ProxyAdapter("http://10.12.129.139:5010/")
+proxyAdapter = ProxyAdapter("http://10.12.12.13:5010/")
