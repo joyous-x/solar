@@ -1,9 +1,10 @@
 # coding=utf-8
+import os
 from flask import redirect
 from pymars.portal_flask.flaskapp import FlaskApp
 
 
-srv = FlaskApp(configs={"root_path":".", "static_folder": "./server/static", "template_folder": "./server/template"})
+srv = FlaskApp(configs={"root_path": os.path.dirname(os.path.abspath(__file__)), "static_folders": {"static": "./server/static"}, "template_folder": "./server/template"})
 srv.register_plugin(plugin_module_path="pymars.portal_flask.plugins.test")
 srv.register_plugin(plugin_module_path="pymars.portal_flask.plugins.ai")
 srv.register_all_plugins()

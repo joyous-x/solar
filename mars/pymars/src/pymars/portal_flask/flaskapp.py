@@ -1,5 +1,6 @@
 # coding=utf-8
 import os
+from functools import partial
 from flask import Blueprint, Flask, request, render_template, send_from_directory, url_for
 import pkgutil
 import importlib
@@ -24,6 +25,9 @@ class FlaskHelper(object):
     def create_app(name=__name__, configs=dict(), use_bootstrap=False):
         """
         对 Flask 的设置，参考：https://dormousehole.readthedocs.io/en/latest/config.html
+        static_folders:
+            如果 static_folders 是字符串，则使用默认的注册为：endpoint='static', static_folder=static_folders
+            如果 static_folders 为dict, 则将其中的 key,value 分别注册为：endpoint=key, static_folder=value
         """
         flask_config = dict(
             root_path=configs.get("root_path") or ".", # os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -44,7 +48,7 @@ class FlaskHelper(object):
         return flask_app
 
     @staticmethod
-    def init_app(flask_app, static_folder, template_folder):
+    def init_app(flask_app, static_folders, template_folder):
         @flask_app.before_request
         def before_request():
             print("before_request: {} {} {}".format(request.path, request.method.lower(), request.remote_addr))
@@ -71,10 +75,6 @@ class FlaskHelper(object):
         def page_not_found(error):
             return render_template('{}/404.html'.format(template_folder)), 404
 
-        @flask_app.route('/static/<path:filename>', endpoint="static")
-        def serve_static(filename):
-            return send_from_directory(static_folder, filename)
-
         @flask_app.template_filter()
         def reverse(args):
             return args[::-1]
@@ -83,6 +83,29 @@ class FlaskHelper(object):
         def template_global():
             # TODO:
             return True
+
+        @flask_app.route('/temp/<path:filename>', endpoint="temp")
+        def serve_static(filename):
+            return send_from_directory(static_folder, filename)
+
+        def serve_static_folders(flask_app_inst, static_folders):
+            endpoint_folders = dict()
+            if isinstance(static_folders, str):
+                endpoint_folders["static"] = static_folders
+            elif isinstance(static_folders, dict):
+                endpoint_folders = static_folders
+            for endpoint, folder in endpoint_folders.items():
+                FlaskHelper.serve_static(flask_app_inst, endpoint, folder)
+            return endpoint_folders
+        serve_static_folders(flask_app, static_folders)
+
+    @staticmethod
+    def serve_static(flask_app, endpoint, static_folder):
+        send_from_directory_generator = lambda static_folder: partial(send_from_directory, static_folder)
+        flask_app.add_url_rule("/{}/<path:filename>".format(endpoint),
+                           view_func=send_from_directory_generator(static_folder),
+                           defaults={'filename': 'index.html'}, endpoint=endpoint, methods=['get'])
+
 
 
 class Plugin(object):
@@ -97,7 +120,7 @@ class FlaskApp(object):
     def __init__(self, configs: dict()):
         self._configs = configs
         self._app = FlaskHelper.create_app(configs=self._configs)
-        FlaskHelper.init_app(self._app, self._configs.get("static_folder"), self._configs.get("template_folder"))
+        FlaskHelper.init_app(self._app, self._configs.get("static_folders"), self._configs.get("template_folder"))
 
     def get_config(self):
         """
