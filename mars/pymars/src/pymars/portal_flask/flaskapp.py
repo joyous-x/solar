@@ -104,8 +104,11 @@ class FlaskHelper(object):
         send_from_directory_generator = lambda static_folder: partial(send_from_directory, static_folder)
         flask_app.add_url_rule("/{}/<path:filename>".format(endpoint),
                            view_func=send_from_directory_generator(static_folder),
-                           defaults={'filename': 'index.html'}, endpoint=endpoint, methods=['get'])
-
+                           endpoint=endpoint, methods=['get'])
+        flask_app.add_url_rule("/{}/".format(endpoint),
+                               view_func=send_from_directory_generator(static_folder),
+                               defaults={"filename":"index.html"},
+                               endpoint="{}.main".format(endpoint), methods=['get'])
 
 
 class Plugin(object):
