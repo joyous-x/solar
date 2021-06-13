@@ -1,11 +1,11 @@
 # crts
-crt_domain.key: 
-crt_domain_bundle.crt: 
+crt_domain.key: domain.key
+crt_domain_bundle.crt: domain_bundle.crt
 # workspace
 host_ip: 172.17.0.1
-workspace_path: ../../
+workspace_path: ../..
 apps_dir_name: myapp
-domain_name: 
+domain_name: domain
 # mysql config
 mysql_user: joyousx
 mysql_passwd: 123.456
