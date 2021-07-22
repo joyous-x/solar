@@ -13,6 +13,7 @@
 
 # Compiled Dynamic libraries
 *.dylib
+*.dSYM
 
 # Fortran module files
 *.mod
