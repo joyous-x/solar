@@ -2,11 +2,13 @@
 #include <string>
 #include <iostream>
 
+#include "common/utils.h"
+
 int main() {
-     std::vector<std::string> vec;
-     vec.push_back("hello");
-     vec.push_back("world");
-     for (auto iter : vec) {
-         std::cout << iter << std::endl;
-     }
+    std::vector<std::string> vec;
+    FileUtils::enum_dir("/Users/jiao/Workspace/solar/venus/samples", vec);
+
+    for (auto iter : vec) {
+        std::cout << iter << std::endl;
+    }
 }

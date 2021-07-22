@@ -1,13 +1,18 @@
-#pragma once
+#ifndef __COMMON_UTILS_H__
+#define __COMMON_UTILS_H__
+
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <string>
-#include <sstream>
 #include <time.h> 
-#include <string>
+#include <math.h>
 #include <codecvt>
 #include <locale>
+#include <iomanip>
+
+#include <string>
+#include <vector>
 #include <iostream>
+#include <sstream>
 
 #ifdef _MSC_VER
 #include <io.h>
@@ -16,7 +21,8 @@
 #else
 #if (_WIN32 || _WIN64)
 #else
-#include <sys/io.h>
+#include <sys/types.h>
+#include <dirent.h>
 #endif
 #endif
 
@@ -55,6 +61,89 @@ public:
 		}
 		return stat64(pcsPath, stat);
 	}
+
+	static int enum_dir(const char* pcsPath, std::vector<std::string>& files) {
+#if (_WIN32 || _WIN64)
+		return enum_files_for_win(pcsPath, files);
+#else
+		return enum_files_for_linux(pcsPath, nullptr, files, 0, -1);
+#endif
+	}
+
+	static int enum_files_for_linux(const char* pcRoot, const char* pcSubDir, std::vector<std::string>& relativesPaths, int depth, int max_depth = -1)
+	{
+		int nRet = -1;
+#if !(_WIN32 || _WIN64)
+		std::string curDirPath, subDirPath;
+		curDirPath += (pcRoot != nullptr ? std::string(pcRoot) : "");
+		subDirPath += (pcSubDir != nullptr ? std::string(pcSubDir) : "");
+
+		if (curDirPath.length() > 0 && curDirPath.length() - 1 != curDirPath.find_last_of("/\\")) {
+			curDirPath += "/";
+		}
+		curDirPath += subDirPath;
+
+		DIR* pDir = opendir(curDirPath.c_str());
+		if (pDir == NULL) {
+			return nRet;
+		}
+
+		struct dirent* ent = nullptr;
+		while ((ent = readdir(pDir)) != NULL) {
+			if (ent->d_type & DT_DIR) {
+				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0) {
+					continue;
+				}
+				if (max_depth > 0 && max_depth < depth) {
+					continue;
+				}
+
+				nRet = enum_files_for_linux(pcRoot, (subDirPath + "/" + std::string(ent->d_name)).c_str(), relativesPaths, depth + 1, max_depth);
+				if (nRet != 0) {
+					//> TODO: 
+				}
+				continue;
+			}
+			
+			relativesPaths.push_back(subDirPath + "/" + std::string(ent->d_name));
+		}
+		closedir(pDir);
+#endif
+		return nRet;
+	}
+
+	static int enum_files_for_win(const char* pcDir, std::vector<std::string>& files)
+	{
+#if (_WIN32 || _WIN64)
+		std::string dirPath(pcDir);
+		struct _finddata_t stFindData;
+		intptr_t findHandle = _findfirst(std::string(dirPath + "*.*").c_str(), &stFindData);
+		if (findHandle < 0)
+		{
+			std::cout << "encum files " << std::string(pcDir) << " error: " << findHandle << std::endl;
+			return -1;
+		}
+
+		do
+		{
+			if (strcmp(stFindData.name, ".") == 0 || 0 == strcmp(stFindData.name, ".."))
+			{
+				continue;
+			}
+			if (stFindData.attrib & _A_SUBDIR)
+			{
+				enum_files(std::string(std::string(pcDir) + stFindData.name + "\\").c_str(), files);
+			}
+			else
+			{
+				files.push_back(std::string(pcDir) + stFindData.name);
+			}
+		} while (0 == _findnext(findHandle, &stFindData));
+
+		_findclose(findHandle);
+#endif
+		return 0;
+	} 
 };
 
 class XsUtils {
@@ -175,3 +264,5 @@ public:
 	}
 
 };
+
+#endif //> __COMMON_UTILS_H__
