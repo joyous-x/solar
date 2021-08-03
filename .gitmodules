@@ -1,0 +1,3 @@
+[submodule "solar_shadow"]
+	path = solar_shadow
+	url = https://github.com/joyous-x/solar_shadow.git
