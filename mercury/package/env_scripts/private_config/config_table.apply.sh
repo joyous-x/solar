@@ -30,6 +30,18 @@ get_args(){
   done
 }
 
+
+os=linux
+uname=`uname  -a`
+
+if [[ $uname =~ "Darwin" ]];then
+    os=mac
+elif [[ $uname =~ "centos" ]];then
+    os=centos
+else
+    echo $uname
+fi
+echo "current os is $os"
 ### replace_priv ###############################
 
 replace_priv() {
@@ -47,7 +59,11 @@ replace_priv() {
             continue
         fi 
         key=${line%:*};val=${line#*:};val=$(echo $val | awk '{gsub(/^\s+|\s+$/, "");print}');
-        sed -i "s/{$key}/$val/g" $target_tmp
+        if [[ $os == "mac" ]];then
+            sed -i "" "s#{$key}#$val#g" "$target_tmp"
+        else
+            sed -i "s#{$key}#$val#g" "$target_tmp"
+        fi
     done < $privat_file
     # check result
     old_line=$(cat $target_file | grep -v ^$ | wc -l)

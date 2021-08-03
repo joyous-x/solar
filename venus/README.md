@@ -1,3 +1,9 @@
-# ImgProc
-## 常见基础操作
-[ImageProcessing100Wen](https://github.com/gzr2017/ImageProcessing100Wen)
+# Venus
+workspace for c/c++ projects
+
+## 基础
+
+## vscode
+### 1. 显示空格和Tab
+- 打开 setting, 搜索 renderControlCharacters 选中勾选框,即可显示tab
+- 打开 setting, 搜索 renderWhitespace 选择 all 即可显示空格

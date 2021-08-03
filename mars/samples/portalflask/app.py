@@ -2,9 +2,21 @@
 import os
 from flask import redirect
 from pymars.portal_flask.flaskapp import FlaskApp
+import subprocess
+from multiprocessing import Pool
 
 
-srv = FlaskApp(configs={"root_path": os.path.dirname(os.path.abspath(__file__)), "static_folders": {"static": "./server/static"}, "template_folder": "./server/template"})
+app_configs = {
+    "root_path": os.path.dirname(os.path.abspath(__file__)),
+    "static_folders": {
+        "static": "./server/static",
+        "home": "/Users/jiao/Workspace/solar/mercury/package/myapp/home",
+        "blog": "/Users/jiao/Workspace/solar/mercury/package/myapp/blog"
+    },
+    "template_folder": "./server/template"
+}
+
+srv = FlaskApp(configs=app_configs)
 srv.register_plugin(plugin_module_path="pymars.portal_flask.plugins.test")
 srv.register_plugin(plugin_module_path="pymars.portal_flask.plugins.ai")
 srv.register_all_plugins()
