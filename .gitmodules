@@ -1,3 +1,6 @@
 [submodule "solar_shadow"]
 	path = pluto
 	url = https://github.com/joyous-x/solar_shadow.git
+[submodule "earth"]
+	path = earth
+	url = https://github.com/joyous-x/blog
