@@ -13,7 +13,7 @@ pdf 相关工具的库主要有：at 2021-05-17
 office 相关库：
 - [python-docx](https://github.com/python-openxml/python-docx)
 - [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
-
+- [python-pptx](https://python-pptx.readthedocs.io/en/latest/index.html#)
 
 # reference
 #     https://openpyxl.readthedocs.io/en/stable/api/openpyxl.styles.fills.html
