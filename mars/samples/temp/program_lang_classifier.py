@@ -7,6 +7,7 @@ from sklearn.datasets import load_files
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.feature_selection import chi2
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer, TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
 import sklearn.metrics
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,6 +17,7 @@ import seaborn as sns
 import shutil
 import hashlib
 import random
+import re
 
 pylab.mpl.rcParams['font.sans-serif'] = ['SimHei'] # for chinese
 pylab.mpl.rcParams['axes.unicode_minus'] = False
@@ -48,17 +50,6 @@ class ProHelper(object):
         return files
 
     @staticmethod
-    def preprocess_data(content_str):
-        content = ''
-        for i in range(len(content_str)):
-            c = content_str[i]
-            if c not in '(){}[]<>,;' and c.isprintable(): # :=&|^\\/%!
-                content = content + c
-                continue
-            content = content + ' '
-        return content
-
-    @staticmethod
     def preprocess_file(filepath):
         unicode_littlendian = [0xFF, 0xFE]
         unicode_bigendian = [0xFE, 0xFF]
@@ -83,70 +74,96 @@ class ProHelper(object):
             file_bytes = file_bytes.decode(source_encoding, 'ignore')
         else:
             file_bytes = str(file_bytes)
-        content = ProHelper.preprocess_data(file_bytes)
+        return file_bytes
+
+    @staticmethod
+    def token_pattern():
+        return r"(?u)((?:\s[^\w\-\s]?[a-zA-Z\-_]{2,}\s)|(?:[^\w\s]{2,}))"  #    r"(?u)((?:\b[a-zA-Z\-_]{2,20}\b)|(?:\b[^0-9]{2,20}\b))"
+
+    reg_a = re.compile(r"^[^\w\-\s]?[a-zA-Z_\-]{2,20}[^\w\-\s]?$", re.I)
+    reg_b = re.compile(r"[^\w\-\s]{2,}", re.I)
+
+    @staticmethod
+    def split_text(s):
+        def is_str_ok(x):
+            for c in x:
+                if ord(c) > 127 or ord(c) < 32 or c in "\n\r\t":
+                    return False
+                if not c.isprintable():
+                    return False
+            return True
+        out = []
+        items = re.split(r'[\\/\(\)\{\},;:\s]\s*', s) # '(){}[]<>,;:'
+        for item in items:
+            if not is_str_ok(item):
+                continue
+            if ProHelper.reg_a.match(item):
+                out.append(item)
+                continue
+            subs = ProHelper.reg_b.findall(item)
+            out += [sub for sub in subs if len(sub) < 8]
+        return out
 
 
-def parse_dataset(dataset):
-    lang_count = {}
-    for i in range(len(dataset.target)):
-        key = dataset.target_names[dataset.target[i]]
-        if key not in lang_count:
-            lang_count[key] = 0
-        lang_count[key] = lang_count[key] + 1
+class SampleStatistics(object):
+    @staticmethod
+    def parse_dataset(target_ids, target_names):
+        lang_count = {}
+        for i in range(len(target_ids)):
+            key = target_names[target_ids[i]]
+            lang_count[key] = lang_count[key] + 1 if key in lang_count else 1
 
-    X = range(len(lang_count))
-    langs = lang_count.keys()
-    counts = lang_count.values()
-    plt.figure(figsize=(8, 6))
-    plt.xticks(X, langs, rotation=60)
-    plt.xlabel("language")
-    plt.bar(x=X, height=counts, width=0.4, alpha=0.8, label="Count")
-    plt.ylabel("Count")
-    plt.title("样本分布")
-    plt.show()
+        X = range(len(lang_count))
+        plt.figure(figsize=(8, 6))
+        plt.title("样本分布")
+        plt.ylabel("Count")
+        plt.xlabel("language")
+        plt.xticks(X, lang_count.keys(), rotation=60)
+        plt.bar(x=X, height=lang_count.values(), width=0.4, alpha=0.8, label="Count")
+        plt.show()
 
-
-def parse_tokenizer(features, targets, feature_names, labels, N=10):
-    # tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 2), stop_words='english')
-    for i in range(len(labels)):
-        lang_id = i
-        lang_name = labels[i]
-        features_chi2 = chi2(features, targets == lang_id)
-        indices = np.argsort(features_chi2[0])
-        feature_names = np.array(feature_names)[indices]
-        unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
-        bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-        print("# '{}':".format(lang_name))
-        print("  . Most correlated unigrams:\n. {}".format('\n. '.join(unigrams[-N:])))
-        print("  . Most correlated bigrams:\n. {}".format('\n. '.join(bigrams[-N:])))
+    @staticmethod
+    def heatmap(ground_truth, predicted, y_labels):
+        conf_mat = sklearn.metrics.confusion_matrix(ground_truth, predicted)
+        fig, ax = plt.subplots(figsize=(10, 10))
+        sns.heatmap(conf_mat, annot=True, fmt='d', xticklabels=y_labels, yticklabels=y_labels)
+        plt.ylabel('Actual')
+        plt.xlabel('Predicted')
+        plt.show()
+        print(sklearn.metrics.classification_report(ground_truth, predicted, target_names=y_labels))
 
 
-def preprocess(dataset, ngram_range=(1,2), max_features=None, preprocess=True):
-    if preprocess:
-        for i in range(len(dataset.data)):
-            dataset.data[i] = ProHelper.preprocess_data(dataset.data[i])
-    token_pattern = r"(?u)((?:\b[a-zA-Z\-_]{2,20}\b)|(?:\b[^0-9]{2,20}\b))"  # r"(?u)\b\w\w+\b"   r"(?u)((?:\b[a-zA-Z\-_]{2,20}\b)|(?:[\-_$@!#\.][[a-zA-Z\-_$@!#\.]{1,20}))"
-    count_vectorizer = CountVectorizer(token_pattern=token_pattern, lowercase=True, max_features=max_features, ngram_range=ngram_range)
-    tfidf_transformer = TfidfTransformer()
+def preprocess(dataset, ngram_range=(1,1)):
+    count_vectorizer = CountVectorizer(token_pattern=ProHelper.token_pattern(), lowercase=True, ngram_range=ngram_range, analyzer=ProHelper.split_text)
     train_counts = count_vectorizer.fit_transform(dataset.data)
-    train_tfidf = tfidf_transformer.fit_transform(train_counts)
-
-    features = [[f, 0, set()] for f in count_vectorizer.get_feature_names()]
-    doc_cnt, feature_cnt = train_counts.shape[0], train_counts.shape[1]
-    for x in range(feature_cnt):
-        docs_info = train_counts[:, x].toarray()
-        features[x][2] = sum(1 if i else 0 for i in docs_info)
-        if features[x][2] < 5:
-            continue
-        features[x][1] = sum(docs_info)
-
-    features = sorted(features, key=lambda x: x[2])
-    for f in features:
-        print(f)
-
-
-
+    train_tfidf = TfidfTransformer().fit_transform(train_counts)
+    # x : (doc_id, feature_id, tfidf), y : target_id
     x, y, feature_names, target_names = train_tfidf, dataset.target, count_vectorizer.get_feature_names(), dataset.target_names
+    # statistics
+    count_statistics = None
+    docs_features_statistics = True
+    if count_statistics:
+        features = [[f, 0, set()] for f in count_vectorizer.get_feature_names()]
+        doc_cnt, feature_cnt = train_counts.shape[0], train_counts.shape[1]
+        for i in range(feature_cnt):
+            docs_info = train_counts[:, i].toarray()
+            features[i][2] = np.count_nonzero(docs_info, 0)[0]
+            if features[i][2] > 5:
+                features[i][1] = np.sum(docs_info, axis=0)[0]
+        features = sorted(features, key=lambda x: x[2], reverse=True)
+    if docs_features_statistics:
+        max_print = 10
+        cur_print = {}
+        for i in range(x.shape[0]):
+            cur_print[y[i]] = 1 if y[i] not in cur_print else cur_print[y[i]] + 1
+            if cur_print[y[i]] > max_print:
+                continue
+            target_name = target_names[y[i]]
+            doc_feature = x.getrow(i).toarray()[0]
+            doc_feature = [(doc_feature[i], feature_names[i]) for i in range(doc_feature.shape[0])]
+            doc_feature = sorted(doc_feature, key=lambda x: x[0], reverse=True)
+            feature_list = " ".join([str((round(j[0],5), j[1])) for j in doc_feature[:50]])
+            print("docid=%d %s %s" % (i, target_name, feature_list))
     return x, y, feature_names, target_names
 
 
@@ -156,6 +173,7 @@ def train(x_train, y_train):
         linear_model.LogisticRegression(random_state=0),
         svm.LinearSVC(),
         naive_bayes.MultinomialNB(),
+        RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0),
     ]
     entries = []
     for model in models:
@@ -164,11 +182,10 @@ def train(x_train, y_train):
         for fold_idx, accuracy in enumerate(accuracies):
             entries.append((model_name, fold_idx, accuracy))
     cv_df = pd.DataFrame(entries, columns=['model_name', 'fold_idx', 'accuracy'])
-    #sns.boxplot(x='model_name', y='accuracy', data=cv_df)
     sns.stripplot(x='model_name', y='accuracy', data=cv_df, size=8, jitter=True, edgecolor="gray", linewidth=2)
     plt.show()
+    # get the best model
     rst = cv_df.groupby('model_name').accuracy.mean()
-
     model_name, model_accu = "", 0
     for item in rst.items():
         if item[1] > model_accu:
@@ -181,34 +198,26 @@ def train(x_train, y_train):
     return model_target
 
 
-def test(model, x_test, y_test, target_list):
-    y_pred = model.predict(x_test)
-    conf_mat = sklearn.metrics.confusion_matrix(y_test, y_pred)
-    fig, ax = plt.subplots(figsize=(10, 10))
-    sns.heatmap(conf_mat, annot=True, fmt='d', xticklabels=target_list, yticklabels=target_list)
-    plt.ylabel('Actual')
-    plt.xlabel('Predicted')
-    plt.show()
-    print(sklearn.metrics.classification_report(y_test, y_pred, target_names=target_list))
-
-
-def predict(model, x_to_predict):
-    pass
-
-
 def run(data_path, show_sample_distribute=False):
     dataset = load_files(data_path, load_content=True, encoding='UTF-8', decode_error='replace')
     if show_sample_distribute:
-        parse_dataset(dataset)
+        SampleStatistics.parse_dataset(dataset.target, dataset.target_names)
     x, y, feature_names, labels = preprocess(dataset, ngram_range=(1,1))
-    #parse_tokenizer(x, y, feature_names, labels)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=3114795823)
+    # train && test
     model = train(x_train, y_train)
-    test(model, x_test, y_test, labels)
-    predict(model, x_to_predict=None)
+    SampleStatistics.heatmap(y_test, model.predict(x_test), labels)
+    # signatures
+    if model.__class__.__name__ == "LinearSVC":
+        signs = model.coef_[0]
+        signs = [(feature_names[i], signs[i]) for i in range(signs.shape[0])]
+        signs = sorted(signs, key=lambda x: x[1], reverse=True)
+        for i in signs:
+            print("%s %.6f" % (i[0], i[1]))
+    print("end!\n")
 
 
-def sample_filter(filepath, catalog, dst_dir):
+def sample_classification(filepath, catalog, dst_dir):
     files = ProHelper.enum_dir(filepath, [".git"])
     for file in files:
         fpath, fname = os.path.split(file)
@@ -236,7 +245,7 @@ def sample_filter(filepath, catalog, dst_dir):
         print("move %s to %s \n" % (file, cur_dst))
 
 
-def sample_filter_balance(filepath, dst_dir, max_files=5000):
+def sample_count_balance(filepath, dst_dir, max_files=5000):
     for catalog in os.listdir(filepath):
         files = os.listdir(os.path.join(filepath, catalog))
         if len(files) < max_files:
@@ -257,6 +266,6 @@ if __name__ == "__main__":
     dataset_a = "/Users/jiao/Workspace/ftype_classifier/programming-language-classifier/data_test"
     dataset_b = "/Users/jiao/Workspace/ftype_classifier/data_train"
     dataset_c = "d:\\Workspace\\tmp\\filetype\\"
-    #sample_filter_balance(dataset_c + "sample\\", dataset_c + "sample_back\\")
-    #sample_filter(dataset_c + "gits\\", None, dataset_c + "sample\\")
+    #sample_count_balance(dataset_c + "sample\\", dataset_c + "sample_back\\")
+    #sample_classification(dataset_c + "gits\\", None, dataset_c + "sample\\")
     run(dataset_c + "sample_back\\")
