@@ -3,25 +3,25 @@
 /*
 * filetype_t = 0x76543210
 * 
-* |  0   1  |  2   3  |   4   |  5  6  7  |
-* |---------|---------|-------|-----------|
-* |  value  | subtype |  flag |    type   |
+* |  0   1  |  2   3  |   4   5  6  7  |
+* |---------|---------|----------------|
+* |  value  |   type  |       flag     |
 * 
-* type    : 支持位与(&)操作
-* flag    : 支持位与(&)操作，目前用作判断是否压缩包，(filetype & 0x000F0000) == ft_archive
-* subtype : 子类型，递增，判定方式如，(filetype & 0x0000FF00) == ft_pe
-* value   : 在单个 subtype 范围内，不可重复
+* flag    : 支持位与(&)操作
+* type    : 类型，递增，判定方式如，(filetype & 0x0000FF00) == ft_pe
+* value   : 在单个 type 范围内，不可重复
 * 
 * NOTE:
-*   1. subtype + value 联合即可唯一确定一个类型
+*   1. type + value 联合即可唯一确定一个具体类型
 */
 
 typedef enum __em_filetype {
     ft_unknown = 0x00000000,
     /// <summary>
-    /// type : 0xFFF00000
+    /// type : 0xFFFF0000
     /// </summary>
     ft_none = ft_unknown,
+	ft_archive = 0x0001 << 16,
     ft_windows = 0x0010 << 16,
     ft_linux = 0x0020 << 16,
     ft_mac = 0x0040 << 16,
@@ -31,10 +31,6 @@ typedef enum __em_filetype {
     ft_java = 0x0400 << 16,
     ft_script = 0x0800 << 16,
     ft_ios = 0x1000 << 16,
-    /// <summary>
-    /// flags : 0x000F0000
-    /// </summary>
-    ft_archive = 0x0001 << 16,
 
     /// <summary>
     /// subtype : 0x0000FF00
