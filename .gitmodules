@@ -4,3 +4,6 @@
 [submodule "earth"]
 	path = earth
 	url = git@github.com:joyous-x/blog.git
+[submodule "neptune"]
+	path = neptune
+	url = git@github.com:joyous-x/neptune.git
