@@ -20,16 +20,16 @@ class XcAssetsModifier(object):
         return parser.parse_args()
 
     @staticmethod
-    def default_rename(filename, prefer=None):
+    def default_rename(filename, appearance, scale, prefer=None):
+        scale = scale.lower()
         new_name = prefer if prefer else "image"
         filename = filename.lower()
         if filename == "Contents.json" or not filename.endswith(".png"):
             return None, None
-        if "@2x" in filename:
-            return "%s@2x.png" % new_name
-        elif "@3x" in filename:
-            return "%s@3x.png" % new_name
-        return "%s.png" % new_name
+        if scale == "1x":
+            return "%s%s.png" % (new_name, "_" + appearance if appearance else "")
+        assert(scale == "2x" or scale == "3x")
+        return "%s%s@%s.png" % (new_name, "_"+appearance if appearance else "", scale)
 
     @staticmethod
     def filter_suffix(path, suffix=".imageset"):
@@ -49,44 +49,61 @@ class XcAssetsModifier(object):
         current_dir = os.path.join(path, dir_name)
         prefer_name = os.path.splitext(dir_name)[0]
 
-        for idiom, scales in files_map.items():
-            for scale, (file, _) in scales.items():
-                if not os.path.isfile(os.path.join(current_dir, file)):
-                    raise BaseException("\t ===> %s is not a file" % file)
-                files_map[idiom][scale] = (file, XcAssetsModifier.default_rename(file, prefer=prefer_name))
+        for idiom, appearances in files_map.items():
+            for appearance, scales in appearances.items():
+                for scale, (file, _) in scales.items():
+                    if not os.path.isfile(os.path.join(current_dir, file)):
+                        raise BaseException("\t ===> %s is not a file" % file)
+                    files_map[idiom][appearance][scale] = (file, XcAssetsModifier.default_rename(file, appearance, scale, prefer=prefer_name))
+
+        new_files = set()
+        for idiom, appearances in files_map.items():
+            for appearance, scales in appearances.items():
+                for scale, (file, new_file) in scales.items():
+                    if new_file in new_files:
+                        raise BaseException("\t %s(%s) has already exists" % (file, new_file))
+                    new_files.add(new_file)
 
         for index, item in enumerate(json_data["images"]):
             if "filename" not in item or item["filename"] == "":
                 continue
+            if "appearances" in item:
+                appearances = [x["value"] if "value" in x else "" for x in item["appearances"]]
+                appearance = "_".join(sorted(appearances))
+            else:
+                appearance = ""
             idiom = item["idiom"]
             scale = item["scale"]
             filename = item["filename"]
-            filename_new = files_map[idiom][scale][1]
-            if idiom not in files_map or scale not in files_map[idiom]:
+            filename_new = files_map[idiom][appearance][scale][1]
+            if idiom not in files_map or scale not in files_map[idiom][appearance]:
                 continue
             json_data["images"][index]["filename"] = filename_new
 
             raw_path = os.path.join(current_dir, filename)
             new_path = os.path.join(current_dir, filename_new)
-            os.rename(raw_path, new_path)
-            message("\t ===> %s is renamed to: %s" % (filename, filename_new))
+            if raw_path != new_path:
+                os.rename(raw_path, new_path)
+                message("\t ===> renamed: %s(%s, %s) --> %s" % (filename, scale, appearance, filename_new))
+            else:
+                message("\t ===> renamed: %s(%s, %s) --: already" % (filename, scale, appearance))
         with open(os.path.join(current_dir, "Contents.json"), encoding="utf8", mode="w") as f:
             f.write(json.dumps(json_data, ensure_ascii=False, indent=4))
 
     @staticmethod
     def modify_imageset_md5(path, dir_name, json_data, files_map):
         """ dependence：npm i thank-tiny-png
+        https://github.com/zhanyuzhang/super-tinypng
         """
-        current_dir = os.path.join(path, dir_name)
-
-        for idiom, scales in files_map.items():
-            for scale, (file, _) in scales.items():
-                current_path = os.path.join(current_dir, file)
-                if not os.path.isfile(current_path):
-                    raise BaseException("\t ===> %s is not a file" % file)
-                cmdline = "npx thank-tiny-png %s" % current_path
-                with os.popen(cmdline, 'r') as f:
-                    message(f.read())
+        for idiom, appearances in files_map.items():
+            for appearance, scales in appearances.items():
+                for scale, (file, _) in scales.items():
+                    current_path = os.path.join(path, dir_name, file)
+                    if not os.path.isfile(current_path):
+                        raise BaseException("\t ===> %s is not a file" % file)
+                    cmdline = "npx thank-tiny-png %s" % current_path
+                    with os.popen(cmdline, 'r') as f:
+                        message(f.read())
 
     @staticmethod
     def modify_imageset(path, dir_name, action=None):
@@ -97,12 +114,19 @@ class XcAssetsModifier(object):
             for index, item in enumerate(json_data["images"]):
                 if "filename" not in item or item["filename"] == "":
                     continue
+                if "appearances" in item:
+                    appearances = [x["value"] if "value" in x else "" for x in item["appearances"]]
+                    appearance = "_".join(sorted(appearances))
+                else:
+                    appearance = ""
                 idiom = item["idiom"]
                 scale = item["scale"]
                 filename = item["filename"]
                 if idiom not in files_map:
                     files_map[idiom] = dict()
-                files_map[idiom][scale] = (filename, None)
+                if appearance not in files_map[idiom]:
+                    files_map[idiom][appearance] = dict()
+                files_map[idiom][appearance][scale] = (filename, None)
         action(path, dir_name, json_data, files_map)
 
     @staticmethod
