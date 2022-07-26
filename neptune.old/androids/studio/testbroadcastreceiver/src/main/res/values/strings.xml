@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">testBroadcastReceiver</string>
-    <string name="broadcast_normal">android.intent.action.broadcastreceiver.normal</string>
-    <string name="broadcast_ordered">android.intent.action.broadcastreceiver.ordered</string>
-</resources>

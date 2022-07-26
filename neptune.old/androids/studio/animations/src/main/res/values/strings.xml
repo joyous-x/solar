@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">animations</string>
-
-    <string name="hello_animation">Hello animations!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_frame_animation">FrameAnimationActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-</resources>

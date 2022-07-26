@@ -1,3 +1,0 @@
-A、使用进度条：
-    > 4.0及以后的版本：使用以下调用即可 (new NotificationCompat.Builder(c)).setProgress(100, 0, false)
-    > 早期版本：需要自定义通知布局，其中包含ProgressBar视图（如：CustomNotification中的进度条实现）

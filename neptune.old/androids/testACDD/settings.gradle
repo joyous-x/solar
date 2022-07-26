@@ -1,2 +1,0 @@
-include ':app', ':plugino', ':pluginoA', ':plugincluster'
-include ':ACDDCore'
