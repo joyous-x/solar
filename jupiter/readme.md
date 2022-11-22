@@ -1,4 +1,0 @@
-# Jupiter
-
-
-## Interesting Projects
