@@ -1,8 +1,6 @@
 package com.ma.sailing.authentication
 
-import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricPrompt
 import androidx.fragment.app.FragmentActivity
@@ -10,15 +8,15 @@ import java.nio.charset.Charset
 import javax.crypto.Cipher
 
 
-typealias OnCipherWithBiometricFinish = (rstCode: Int, data: CipherDataWrapper?, result: BiometricPrompt.AuthenticationResult?) -> Unit
+typealias OnCipherWithBiometricFinish = (rstCode: Int, data: MaCipherDataWrapper?, result: BiometricPrompt.AuthenticationResult?) -> Unit
 
 
-data class CipherDataWrapper(val cipherData: ByteArray, val iv: ByteArray) {
+data class MaCipherDataWrapper(val cipherData: ByteArray, val iv: ByteArray) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as CipherDataWrapper
+        other as MaCipherDataWrapper
 
         if (!cipherData.contentEquals(other.cipherData)) return false
         if (!iv.contentEquals(other.iv)) return false
@@ -35,13 +33,15 @@ data class CipherDataWrapper(val cipherData: ByteArray, val iv: ByteArray) {
 
 
 class MaCipherWithBiometric {
+    companion object {
+        fun bytes2String(data: ByteArray, charsetName: String = "UTF-8") : String {
+            return String(data, Charset.forName(charsetName))
+        }
+    }
+
     private var secretKeyName: String = ""
     private var authCallback: FunBiometricAuthCallback? = null
     private var cipher: Cipher? = null
-
-    fun bytes2String(data: ByteArray, charsetName: String = "UTF-8") : String {
-        return String(data, Charset.forName(charsetName))
-    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun buildEncryptCipher(keyName: String, rawData: String, onFinish: OnCipherWithBiometricFinish?) : MaCipherWithBiometric {
@@ -58,7 +58,7 @@ class MaCipherWithBiometric {
             }
 
             val encryptedData = cipher.doFinal(rawData.toByteArray(Charset.forName("UTF-8")))
-            val cipherDataWrapper = CipherDataWrapper(encryptedData, cipher.iv)
+            val cipherDataWrapper = MaCipherDataWrapper(encryptedData, cipher.iv)
             onFinish?.invoke(rstCode, cipherDataWrapper, authResult)
         }
 
@@ -69,7 +69,7 @@ class MaCipherWithBiometric {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun buildDecryptCipher(keyName: String, cipherData: CipherDataWrapper, onFinish: OnCipherWithBiometricFinish?) : MaCipherWithBiometric {
+    fun buildDecryptCipher(keyName: String, cipherData: MaCipherDataWrapper, onFinish: OnCipherWithBiometricFinish?) : MaCipherWithBiometric {
         this.authCallback = BiometricAuthCallback@{ success, rstCode, authResult ->
             if (!success || authResult == null) {
                 onFinish?.invoke(rstCode, null, authResult)
@@ -83,7 +83,7 @@ class MaCipherWithBiometric {
             }
 
             val decryptedData = cipher.doFinal(cipherData.cipherData)
-            val cipherDataWrapper = CipherDataWrapper(decryptedData, cipher.iv)
+            val cipherDataWrapper = MaCipherDataWrapper(decryptedData, cipher.iv)
             onFinish?.invoke(rstCode, cipherDataWrapper, authResult)
         }
 

@@ -54,7 +54,7 @@ class MaBiometricUtil {
     }
 
     // 设置 DEVICE_CREDENTIAL 表示：允许利用设备 PIN 码、图案或密码等非生物认证进行身份验证
-    private val allowedAuthenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
+    private val allowedAuthenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG
     private var authenticationCallback: BiometricPrompt.AuthenticationCallback? = null
     private var biometricPromptInfo: BiometricPrompt.PromptInfo? = null
 

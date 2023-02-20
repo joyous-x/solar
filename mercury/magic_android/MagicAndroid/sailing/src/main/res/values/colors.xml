@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="themeBlue">#FF2196F3</color>
-    <color name="themeBlueWithAlpha">#7f2196F3</color>
+    <color name="themeBlueAlpha900">#df2196F3</color>
+    <color name="themeBlueAlpha500">#7f2196F3</color>
+    <color name="themeBlueAlpha200">#2f2196F3</color>
+
+    <color name="commonBlue">#ff0582F2</color>
+    <color name="colorHyperlink">@color/commonBlue</color>
+    <color name="colorPrivacy">#ff0F8DFD</color>
 
     <color name="txtWhite">#FFF1F2F3</color>
     <color name="txtBlack">#FF323232</color>
