@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:IosScaffold/IosScaffold.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DemoForIos/DemoForIos.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MaCommonPackage">
+   </FileRef>
+   <FileRef
+      location = "group:MaCommonFramework/MaCommonFramework.xcodeproj">
+   </FileRef>
+</Workspace>
