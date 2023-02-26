@@ -4,6 +4,7 @@
     <dimen name="button_margin">6dp</dimen>
 
     <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_24">24dp</dimen>
 

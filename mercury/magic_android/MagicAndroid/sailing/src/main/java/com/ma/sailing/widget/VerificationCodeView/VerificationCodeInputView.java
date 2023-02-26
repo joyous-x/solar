@@ -27,7 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ma.sailing.R;
-import com.ma.sailing.common.DensityUtils;
+import com.ma.sailing.common.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -162,10 +162,10 @@ public class VerificationCodeInputView extends RelativeLayout {
         mEtNumber = typedArray.getInteger(R.styleable.VerificationCodeInputView_vciv_et_number, 4);
         int inputType = typedArray.getInt(R.styleable.VerificationCodeInputView_vciv_et_inputType, VCInputType.NUMBER.ordinal());
         mEtInputType = VCInputType.values()[inputType];
-        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_width, DensityUtils.INSTANCE.dp2px(context, 40));
-        mEtHeight = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_height, DensityUtils.INSTANCE.dp2px(context, 40));
+        mEtWidth = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_width, DensityUtil.INSTANCE.dp2px(context, 40));
+        mEtHeight = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_height, DensityUtil.INSTANCE.dp2px(context, 40));
         mEtTextColor = typedArray.getColor(R.styleable.VerificationCodeInputView_vciv_et_text_color, Color.BLACK);
-        mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_text_size, DensityUtils.INSTANCE.sp2px(context, 14));
+        mEtTextSize = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_text_size, DensityUtil.INSTANCE.sp2px(context, 14));
         mEtBackground = typedArray.getResourceId(R.styleable.VerificationCodeInputView_vciv_et_background, -1);
         if (mEtBackground < 0) {
             mEtBackground = typedArray.getColor(R.styleable.VerificationCodeInputView_vciv_et_background, Color.WHITE);
@@ -179,10 +179,10 @@ public class VerificationCodeInputView extends RelativeLayout {
         if (isBisect) {
             mEtSpacing = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeInputView_vciv_et_spacing, 0);
         }
-        mEtCursorWidth = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_cursor_width, DensityUtils.INSTANCE.dp2px(context, 2));
-        mEtCursorHeight = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_cursor_height, DensityUtils.INSTANCE.dp2px(context, 30));
+        mEtCursorWidth = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_cursor_width, DensityUtil.INSTANCE.dp2px(context, 2));
+        mEtCursorHeight = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_cursor_height, DensityUtil.INSTANCE.dp2px(context, 30));
         mEtCursorColor = typedArray.getColor(R.styleable.VerificationCodeInputView_vciv_et_cursor_color, Color.parseColor("#C3C3C3"));
-        mEtUnderLineHeight = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_underline_height, DensityUtils.INSTANCE.dp2px(context, 1));
+        mEtUnderLineHeight = typedArray.getDimensionPixelOffset(R.styleable.VerificationCodeInputView_vciv_et_underline_height, DensityUtil.INSTANCE.dp2px(context, 1));
         mEtUnderLineDefaultColor = typedArray.getColor(R.styleable.VerificationCodeInputView_vciv_et_underline_default_color, Color.parseColor("#F0F0F0"));
         mEtUnderLineFocusColor = typedArray.getColor(R.styleable.VerificationCodeInputView_vciv_et_underline_focus_color, Color.parseColor("#C3C3C3"));
         mEtUnderLineShow = typedArray.getBoolean(R.styleable.VerificationCodeInputView_vciv_et_underline_show, false);

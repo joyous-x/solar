@@ -1,6 +1,7 @@
 package com.ma.sailing.activities
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -48,7 +49,8 @@ open class MaActivity : AppCompatActivity() {
         }
     }
 
-    fun dismiss() {
+    fun dismiss(result: Intent? = null) {
+        result?.let { setResult(Activity.RESULT_OK, it) }
         finish()
         // overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }

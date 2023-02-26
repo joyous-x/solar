@@ -3,7 +3,7 @@ package com.ma.sailing.common
 import android.content.Context
 import android.util.TypedValue
 
-object DensityUtils {
+object DensityUtil {
     /**
      * dp转px
      *

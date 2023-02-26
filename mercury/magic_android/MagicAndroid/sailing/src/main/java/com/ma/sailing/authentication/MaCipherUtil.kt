@@ -26,7 +26,7 @@ class MaCipherUtil(
         const val KEY_SIZE = 256
     }
 
-    fun getSecretKeyFromKeyStore(keyAlias: String, keyPasswd: String? = null, createIfNotExist: Boolean = true) : SecretKey? {
+    private fun getSecretKeyFromKeyStore(keyAlias: String, keyPasswd: String? = null, createIfNotExist: Boolean = true) : SecretKey? {
         // ? 是否是：ANDROID_KEYSTORE
         val defaultType = KeyStore.getDefaultType()
 

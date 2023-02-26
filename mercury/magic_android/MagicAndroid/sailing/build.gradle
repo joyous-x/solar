@@ -44,5 +44,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // Authentication with Biometric
     implementation "androidx.biometric:biometric:1.1.0"
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.9"
+    // MMKV
+    implementation 'com.tencent:mmkv:1.2.14'
 }

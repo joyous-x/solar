@@ -98,7 +98,7 @@ object UriUtil {
                                 continue
                             }
                             val uuid = getUuid.invoke(storageVolumeElement) as String
-                            if (uuid != null && uuid == type) {
+                            if (uuid == type) {
                                 return File(getPath.invoke(storageVolumeElement).toString() + "/" + split[1])
                             }
                         }
