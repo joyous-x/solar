@@ -60,9 +60,10 @@ $ swift package generate-xcodeproj
 
 最后，编译运行：
 ```
-$ swift build
+$ swift build -c debug
 $ swift run
 ```
+其中，```-c```参数是可选的，最后生成的文件位于：```./build/debug```目录下
 
 > 使用```swift package tools-version```可以获得 SPM 编译版本
 
