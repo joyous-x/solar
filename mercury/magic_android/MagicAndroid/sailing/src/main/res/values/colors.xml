@@ -5,12 +5,18 @@
     <color name="themeBlueAlpha500">#7f2196F3</color>
     <color name="themeBlueAlpha200">#2f2196F3</color>
 
-    <color name="commonBlue">#ff0582F2</color>
-    <color name="colorHyperlink">@color/commonBlue</color>
-    <color name="colorPrivacy">#ff0F8DFD</color>
+    <!-- common colors -->
+    <color name="blueSky">#508FDC</color>
+    <color name="blueNormal">#ff0582F2</color>
+    <color name="goldNormal">#FACA2A</color>
 
-    <color name="txtWhite">#FFF1F2F3</color>
-    <color name="txtBlack">#FF323232</color>
+    <!-- used colors -->
+    <color name="colorHyperlink">@color/blueNormal</color>
+    <color name="colorPrivacy">#0F8DFD</color>
+
+    <!-- xxx colors -->
+    <color name="txtWhite">#F1F2F3</color>
+    <color name="txtBlack">#323232</color>
     <color name="txtBlackWithAlpha">#9F323232</color>
 
 </resources>

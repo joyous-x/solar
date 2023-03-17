@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MaDialog.AppTheme.ProgressBar" parent="Widget.AppCompat.ProgressBar">
-        <item name="android:indeterminateTint">#FACA2A</item>
+        <item name="android:indeterminateTint">@color/blueSky</item>
         <item name="android:indeterminateTintMode">src_atop</item>
     </style>
 

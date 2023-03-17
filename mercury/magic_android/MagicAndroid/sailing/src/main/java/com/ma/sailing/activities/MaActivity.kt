@@ -34,14 +34,25 @@ open class MaActivity : AppCompatActivity() {
                 }
             }
         }
+
+        fun setSecureFlag(w: Window) {
+            // Several gingerbread devices have problems with FLAG_SECURE
+            w.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        }
     }
 
     protected var enableBackPressedTwice2Exit = false
     protected var enableBackPressed = true
+    protected var enableSecureFlag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         translucentStatusBar(this, true)
+
+        if (enableSecureFlag) {
+            setSecureFlag(window)
+        }
+
     }
 
     private fun translucentStatusBar(activity: Activity, hideStatusBarBackground: Boolean) {

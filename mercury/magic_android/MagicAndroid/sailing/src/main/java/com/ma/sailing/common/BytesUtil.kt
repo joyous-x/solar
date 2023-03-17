@@ -15,5 +15,15 @@ object BytesUtil {
         return buf
     }
 
+    fun bytes2HexStr(bytes: ByteArray): String {
+        val resultBuff = StringBuffer(bytes.size * 2)
+        for (e in bytes) {
+            val cH = e.toInt() and 0xF0 shr 4
+            val cL = e.toInt() and 0x0F
+            resultBuff.append(cH)
+            resultBuff.append(cL)
+        }
+        return resultBuff.toString()
+    }
 
 }
