@@ -1,0 +1,27 @@
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '10.0'
+
+target 'IosScaffold' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for IosScaffold
+  pod 'HandyJSON', '~> 5.0.2'
+  pod 'SnapKit', '~> 4.2.0'
+  # network
+  pod 'Moya/RxSwift','15.0.0'
+  pod 'MMKV','1.2.2'
+  pod "CocoaLumberjack/Swift", '3.6.2'
+
+  target 'IosScaffoldTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'IosScaffoldUITests' do
+    # Pods for testing
+  end
+
+end

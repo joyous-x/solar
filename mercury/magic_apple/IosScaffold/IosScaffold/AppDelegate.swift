@@ -1,11 +1,5 @@
-//
-//  AppDelegate.swift
-//  IosScaffold
-//
-//  Created by jiao on 2023/2/24.
-//
-
 import UIKit
+import MaUtilFrame
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +8,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        LocalStorage.initFirst()       // mmkv初始化要在主线程，不然会报异常，需要最早初始化，防止其他异步线程调用到
+        LogUtil.initLog(enable: true, enableLogfile: false)
+        
+        /// - Note: 新用户
+        let installTime = LocalStorage.shared().getInt64(key: SpKey.SP_KEY_APP_FIRST_INSTALL_TIME, defValue: -1)
+        if installTime < 0 {
+            LocalStorage.shared().putInt64(key: SpKey.SP_KEY_APP_FIRST_INSTALL_TIME, value: Date().timeStamp)
+        }
         return true
     }
 
@@ -31,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    /// 程序退出
+    func applicationWillTerminate(_ application: UIApplication) {
+        
+    }
 }
 
