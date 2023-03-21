@@ -16,6 +16,7 @@
 		0F19A50429B1FED100095E27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F19A50329B1FED100095E27 /* Assets.xcassets */; };
 		0F19A50729B1FED100095E27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F19A50529B1FED100095E27 /* LaunchScreen.storyboard */; };
 		0F19A51229B1FED100095E27 /* IosScaffoldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F19A51129B1FED100095E27 /* IosScaffoldTests.swift */; };
+		0F76285F29C943C7004200E2 /* MyAssets in Resources */ = {isa = PBXBuildFile; fileRef = 0F76285E29C943C7004200E2 /* MyAssets */; };
 		0FAB9C4629BEFB27009EF82C /* MaCommonKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB9C4529BEFB27009EF82C /* MaCommonKit.docc */; };
 		0FAB9C4729BEFB27009EF82C /* MaCommonKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAB9C4429BEFB27009EF82C /* MaCommonKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FAB9C4A29BEFB27009EF82C /* MaCommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAB9C4229BEFB27009EF82C /* MaCommonKit.framework */; };
@@ -84,6 +85,7 @@
 		0F19A50829B1FED100095E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F19A50D29B1FED100095E27 /* IosScaffoldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IosScaffoldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F19A51129B1FED100095E27 /* IosScaffoldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosScaffoldTests.swift; sourceTree = "<group>"; };
+		0F76285E29C943C7004200E2 /* MyAssets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MyAssets; sourceTree = "<group>"; };
 		0FAB9C4229BEFB27009EF82C /* MaCommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaCommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAB9C4429BEFB27009EF82C /* MaCommonKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaCommonKit.h; sourceTree = "<group>"; };
 		0FAB9C4529BEFB27009EF82C /* MaCommonKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MaCommonKit.docc; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		0F19A4F929B1FECF00095E27 /* IosScaffold */ = {
 			isa = PBXGroup;
 			children = (
+				0F76285E29C943C7004200E2 /* MyAssets */,
 				0FAB9C5A29BEFD17009EF82C /* Common */,
 				0FAB9C5129BEFC81009EF82C /* ViewControllers */,
 				0F19A4FA29B1FECF00095E27 /* AppDelegate.swift */,
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F19A50729B1FED100095E27 /* LaunchScreen.storyboard in Resources */,
+				0F76285F29C943C7004200E2 /* MyAssets in Resources */,
 				0F19A50429B1FED100095E27 /* Assets.xcassets in Resources */,
 				0F19A50229B1FECF00095E27 /* Main.storyboard in Resources */,
 			);
