@@ -11,12 +11,19 @@
     <color name="goldNormal">#FACA2A</color>
 
     <!-- used colors -->
-    <color name="colorHyperlink">@color/blueNormal</color>
-    <color name="colorPrivacy">#0F8DFD</color>
+    <color name="hyperlink">@color/blueNormal</color>
+    <color name="privacyPolicy">#0F8DFD</color>
 
     <!-- xxx colors -->
     <color name="txtWhite">#F1F2F3</color>
-    <color name="txtBlack">#323232</color>
+    <color name="txtPrimary">#333333</color>
+    <color name="txtSecondary">#A2A2A2</color>
     <color name="txtBlackWithAlpha">#9F323232</color>
+
+    <!-- 线条边框的颜色 -->
+    <color name="borderGray">#1B1B1B</color>
+    <color name="borderPurpleLight">#D4CCFF</color>
+
+
 
 </resources>

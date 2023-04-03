@@ -7,158 +7,161 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F11077F29BF54BD00B93A12 /* Pods_MaUtilFrame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F11077E29BF54BD00B93A12 /* Pods_MaUtilFrame.framework */; };
-		0F11078829BF558000B93A12 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11078729BF558000B93A12 /* Date+.swift */; };
-		0F11078B29C057E000B93A12 /* WidgetDevUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11078A29C057E000B93A12 /* WidgetDevUtil.swift */; };
-		0FAB9C8529BF0A9F009EF82C /* MaUtilFrame.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0FAB9C8429BF0A9F009EF82C /* MaUtilFrame.docc */; };
-		0FAB9C8629BF0A9F009EF82C /* MaUtilFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAB9C8329BF0A9F009EF82C /* MaUtilFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C319F94E850F15D22B46C91 /* Pods_MaUtilFrame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE450E202BAA4BC9734A043 /* Pods_MaUtilFrame.framework */; };
+		0F16ECE029DAF51C001E7750 /* MaUtilKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0F16ECDF29DAF51C001E7750 /* MaUtilKit.docc */; };
+		0F16ECE129DAF51C001E7750 /* MaUtilKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F16ECDE29DAF51C001E7750 /* MaUtilKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F16ECEC29DAF6D4001E7750 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16ECEB29DAF6D4001E7750 /* Date+.swift */; };
+		0F16ECF129DAF71C001E7750 /* Pods_MaUtilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F16ECF029DAF71C001E7750 /* Pods_MaUtilKit.framework */; };
+		0F16ECF329DAF7CB001E7750 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16ECF229DAF7CB001E7750 /* View+.swift */; };
+		0F16ECF629DAF81C001E7750 /* WidgetDevUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16ECF529DAF81C001E7750 /* WidgetDevUtil.swift */; };
+		8EEFC4EC843BBA64C1F082E1 /* Pods_MaUtilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CD0423B0F90621F076BC4A /* Pods_MaUtilKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F11077E29BF54BD00B93A12 /* Pods_MaUtilFrame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_MaUtilFrame.framework; path = Shared/Pods_MaUtilFrame.framework; sourceTree = "<group>"; };
-		0F11078729BF558000B93A12 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		0F11078A29C057E000B93A12 /* WidgetDevUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDevUtil.swift; sourceTree = "<group>"; };
-		0FAB9C8029BF0A9F009EF82C /* MaUtilFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaUtilFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FAB9C8329BF0A9F009EF82C /* MaUtilFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaUtilFrame.h; sourceTree = "<group>"; };
-		0FAB9C8429BF0A9F009EF82C /* MaUtilFrame.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MaUtilFrame.docc; sourceTree = "<group>"; };
-		4FE450E202BAA4BC9734A043 /* Pods_MaUtilFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaUtilFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FFA6595AC2386402ABA4EDB /* Pods-MaUtilFrame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaUtilFrame.release.xcconfig"; path = "Target Support Files/Pods-MaUtilFrame/Pods-MaUtilFrame.release.xcconfig"; sourceTree = "<group>"; };
-		F10470ACA29D8D445E4AE7F6 /* Pods-MaUtilFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaUtilFrame.debug.xcconfig"; path = "Target Support Files/Pods-MaUtilFrame/Pods-MaUtilFrame.debug.xcconfig"; sourceTree = "<group>"; };
+		0F16ECDB29DAF51C001E7750 /* MaUtilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaUtilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F16ECDE29DAF51C001E7750 /* MaUtilKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaUtilKit.h; sourceTree = "<group>"; };
+		0F16ECDF29DAF51C001E7750 /* MaUtilKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MaUtilKit.docc; sourceTree = "<group>"; };
+		0F16ECEB29DAF6D4001E7750 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		0F16ECF029DAF71C001E7750 /* Pods_MaUtilKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_MaUtilKit.framework; path = Shared/Pods_MaUtilKit.framework; sourceTree = "<group>"; };
+		0F16ECF229DAF7CB001E7750 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		0F16ECF529DAF81C001E7750 /* WidgetDevUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetDevUtil.swift; sourceTree = "<group>"; };
+		35CD0423B0F90621F076BC4A /* Pods_MaUtilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaUtilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85796D309EBEFA826E17FF36 /* Pods-MaUtilKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaUtilKit.release.xcconfig"; path = "Target Support Files/Pods-MaUtilKit/Pods-MaUtilKit.release.xcconfig"; sourceTree = "<group>"; };
+		9945CB9E82FD8372937A0F5E /* Pods-MaUtilKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaUtilKit.debug.xcconfig"; path = "Target Support Files/Pods-MaUtilKit/Pods-MaUtilKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0FAB9C7D29BF0A9F009EF82C /* Frameworks */ = {
+		0F16ECD829DAF51C001E7750 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F11077F29BF54BD00B93A12 /* Pods_MaUtilFrame.framework in Frameworks */,
-				4C319F94E850F15D22B46C91 /* Pods_MaUtilFrame.framework in Frameworks */,
+				0F16ECF129DAF71C001E7750 /* Pods_MaUtilKit.framework in Frameworks */,
+				8EEFC4EC843BBA64C1F082E1 /* Pods_MaUtilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F11078529BF556D00B93A12 /* Common */ = {
+		023098E2F60C50856D68BEF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0F11078629BF557200B93A12 /* Extensions */,
+				0F16ECF029DAF71C001E7750 /* Pods_MaUtilKit.framework */,
+				35CD0423B0F90621F076BC4A /* Pods_MaUtilKit.framework */,
 			);
-			path = Common;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0F11078629BF557200B93A12 /* Extensions */ = {
+		0F16ECD129DAF51B001E7750 = {
 			isa = PBXGroup;
 			children = (
-				0F11078729BF558000B93A12 /* Date+.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		0F11078929C057B900B93A12 /* DevTools */ = {
-			isa = PBXGroup;
-			children = (
-				0F11078A29C057E000B93A12 /* WidgetDevUtil.swift */,
-			);
-			path = DevTools;
-			sourceTree = "<group>";
-		};
-		0FAB9C7629BF0A9F009EF82C = {
-			isa = PBXGroup;
-			children = (
-				0FAB9C8229BF0A9F009EF82C /* MaUtilFrame */,
-				0FAB9C8129BF0A9F009EF82C /* Products */,
-				4E0C09B9CA9C1141AF8DA746 /* Pods */,
-				649CC7B86A3D6B06834A8CE5 /* Frameworks */,
+				0F16ECDD29DAF51C001E7750 /* MaUtilKit */,
+				0F16ECDC29DAF51C001E7750 /* Products */,
+				526B2E5A00442E696EBCBC08 /* Pods */,
+				023098E2F60C50856D68BEF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		0FAB9C8129BF0A9F009EF82C /* Products */ = {
+		0F16ECDC29DAF51C001E7750 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0FAB9C8029BF0A9F009EF82C /* MaUtilFrame.framework */,
+				0F16ECDB29DAF51C001E7750 /* MaUtilKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0FAB9C8229BF0A9F009EF82C /* MaUtilFrame */ = {
+		0F16ECDD29DAF51C001E7750 /* MaUtilKit */ = {
 			isa = PBXGroup;
 			children = (
-				0F11078929C057B900B93A12 /* DevTools */,
-				0F11078529BF556D00B93A12 /* Common */,
-				0FAB9C8329BF0A9F009EF82C /* MaUtilFrame.h */,
-				0FAB9C8429BF0A9F009EF82C /* MaUtilFrame.docc */,
+				0F16ECE929DAF6AC001E7750 /* Common */,
+				0F16ECDE29DAF51C001E7750 /* MaUtilKit.h */,
+				0F16ECDF29DAF51C001E7750 /* MaUtilKit.docc */,
 			);
-			path = MaUtilFrame;
+			path = MaUtilKit;
 			sourceTree = "<group>";
 		};
-		4E0C09B9CA9C1141AF8DA746 /* Pods */ = {
+		0F16ECE929DAF6AC001E7750 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F10470ACA29D8D445E4AE7F6 /* Pods-MaUtilFrame.debug.xcconfig */,
-				6FFA6595AC2386402ABA4EDB /* Pods-MaUtilFrame.release.xcconfig */,
+				0F16ECF429DAF81C001E7750 /* DevTools */,
+				0F16ECEA29DAF6B5001E7750 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0F16ECEA29DAF6B5001E7750 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0F16ECEB29DAF6D4001E7750 /* Date+.swift */,
+				0F16ECF229DAF7CB001E7750 /* View+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0F16ECF429DAF81C001E7750 /* DevTools */ = {
+			isa = PBXGroup;
+			children = (
+				0F16ECF529DAF81C001E7750 /* WidgetDevUtil.swift */,
+			);
+			path = DevTools;
+			sourceTree = "<group>";
+		};
+		526B2E5A00442E696EBCBC08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9945CB9E82FD8372937A0F5E /* Pods-MaUtilKit.debug.xcconfig */,
+				85796D309EBEFA826E17FF36 /* Pods-MaUtilKit.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		649CC7B86A3D6B06834A8CE5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0F11077E29BF54BD00B93A12 /* Pods_MaUtilFrame.framework */,
-				4FE450E202BAA4BC9734A043 /* Pods_MaUtilFrame.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0FAB9C7B29BF0A9F009EF82C /* Headers */ = {
+		0F16ECD629DAF51C001E7750 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FAB9C8629BF0A9F009EF82C /* MaUtilFrame.h in Headers */,
+				0F16ECE129DAF51C001E7750 /* MaUtilKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0FAB9C7F29BF0A9F009EF82C /* MaUtilFrame */ = {
+		0F16ECDA29DAF51C001E7750 /* MaUtilKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FAB9C8929BF0A9F009EF82C /* Build configuration list for PBXNativeTarget "MaUtilFrame" */;
+			buildConfigurationList = 0F16ECE429DAF51C001E7750 /* Build configuration list for PBXNativeTarget "MaUtilKit" */;
 			buildPhases = (
-				592D5F54FAD4BD41B6C1C32D /* [CP] Check Pods Manifest.lock */,
-				0FAB9C7B29BF0A9F009EF82C /* Headers */,
-				0FAB9C7C29BF0A9F009EF82C /* Sources */,
-				0FAB9C7D29BF0A9F009EF82C /* Frameworks */,
-				0FAB9C7E29BF0A9F009EF82C /* Resources */,
+				2AA6F8393AA8A03E95D43194 /* [CP] Check Pods Manifest.lock */,
+				0F16ECD629DAF51C001E7750 /* Headers */,
+				0F16ECD729DAF51C001E7750 /* Sources */,
+				0F16ECD829DAF51C001E7750 /* Frameworks */,
+				0F16ECD929DAF51C001E7750 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MaUtilFrame;
-			productName = MaUtilFrame;
-			productReference = 0FAB9C8029BF0A9F009EF82C /* MaUtilFrame.framework */;
+			name = MaUtilKit;
+			productName = MaUtilKit;
+			productReference = 0F16ECDB29DAF51C001E7750 /* MaUtilKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0FAB9C7729BF0A9F009EF82C /* Project object */ = {
+		0F16ECD229DAF51B001E7750 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					0FAB9C7F29BF0A9F009EF82C = {
+					0F16ECDA29DAF51C001E7750 = {
 						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
-			buildConfigurationList = 0FAB9C7A29BF0A9F009EF82C /* Build configuration list for PBXProject "MaUtilFrame_For_Dev" */;
+			buildConfigurationList = 0F16ECD529DAF51B001E7750 /* Build configuration list for PBXProject "MaUtilKit_Dev" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,18 +169,18 @@
 				en,
 				Base,
 			);
-			mainGroup = 0FAB9C7629BF0A9F009EF82C;
-			productRefGroup = 0FAB9C8129BF0A9F009EF82C /* Products */;
+			mainGroup = 0F16ECD129DAF51B001E7750;
+			productRefGroup = 0F16ECDC29DAF51C001E7750 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0FAB9C7F29BF0A9F009EF82C /* MaUtilFrame */,
+				0F16ECDA29DAF51C001E7750 /* MaUtilKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0FAB9C7E29BF0A9F009EF82C /* Resources */ = {
+		0F16ECD929DAF51C001E7750 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -187,7 +190,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		592D5F54FAD4BD41B6C1C32D /* [CP] Check Pods Manifest.lock */ = {
+		2AA6F8393AA8A03E95D43194 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -202,7 +205,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MaUtilFrame-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MaUtilKit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -212,20 +215,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0FAB9C7C29BF0A9F009EF82C /* Sources */ = {
+		0F16ECD729DAF51C001E7750 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FAB9C8529BF0A9F009EF82C /* MaUtilFrame.docc in Sources */,
-				0F11078B29C057E000B93A12 /* WidgetDevUtil.swift in Sources */,
-				0F11078829BF558000B93A12 /* Date+.swift in Sources */,
+				0F16ECE029DAF51C001E7750 /* MaUtilKit.docc in Sources */,
+				0F16ECF329DAF7CB001E7750 /* View+.swift in Sources */,
+				0F16ECEC29DAF6D4001E7750 /* Date+.swift in Sources */,
+				0F16ECF629DAF81C001E7750 /* WidgetDevUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0FAB9C8729BF0A9F009EF82C /* Debug */ = {
+		0F16ECE229DAF51C001E7750 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -288,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		0FAB9C8829BF0A9F009EF82C /* Release */ = {
+		0F16ECE329DAF51C001E7750 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -345,9 +349,9 @@
 			};
 			name = Release;
 		};
-		0FAB9C8A29BF0A9F009EF82C /* Debug */ = {
+		0F16ECE529DAF51C001E7750 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F10470ACA29D8D445E4AE7F6 /* Pods-MaUtilFrame.debug.xcconfig */;
+			baseConfigurationReference = 9945CB9E82FD8372937A0F5E /* Pods-MaUtilKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -369,7 +373,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ma.MaUtilFrame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ma.MaUtilKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -378,9 +382,9 @@
 			};
 			name = Debug;
 		};
-		0FAB9C8B29BF0A9F009EF82C /* Release */ = {
+		0F16ECE629DAF51C001E7750 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FFA6595AC2386402ABA4EDB /* Pods-MaUtilFrame.release.xcconfig */;
+			baseConfigurationReference = 85796D309EBEFA826E17FF36 /* Pods-MaUtilKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,7 +406,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ma.MaUtilFrame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ma.MaUtilKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -414,25 +418,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0FAB9C7A29BF0A9F009EF82C /* Build configuration list for PBXProject "MaUtilFrame_For_Dev" */ = {
+		0F16ECD529DAF51B001E7750 /* Build configuration list for PBXProject "MaUtilKit_Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0FAB9C8729BF0A9F009EF82C /* Debug */,
-				0FAB9C8829BF0A9F009EF82C /* Release */,
+				0F16ECE229DAF51C001E7750 /* Debug */,
+				0F16ECE329DAF51C001E7750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FAB9C8929BF0A9F009EF82C /* Build configuration list for PBXNativeTarget "MaUtilFrame" */ = {
+		0F16ECE429DAF51C001E7750 /* Build configuration list for PBXNativeTarget "MaUtilKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0FAB9C8A29BF0A9F009EF82C /* Debug */,
-				0FAB9C8B29BF0A9F009EF82C /* Release */,
+				0F16ECE529DAF51C001E7750 /* Debug */,
+				0F16ECE629DAF51C001E7750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 0FAB9C7729BF0A9F009EF82C /* Project object */;
+	rootObject = 0F16ECD229DAF51B001E7750 /* Project object */;
 }

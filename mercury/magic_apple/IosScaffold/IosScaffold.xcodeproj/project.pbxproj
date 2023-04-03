@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F11078129BF54D300B93A12 /* MaUtilFrame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F11078029BF54D300B93A12 /* MaUtilFrame.framework */; };
-		0F11078229BF54D300B93A12 /* MaUtilFrame.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F11078029BF54D300B93A12 /* MaUtilFrame.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F16ECEE29DAF706001E7750 /* MaUtilKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F16ECED29DAF706001E7750 /* MaUtilKit.framework */; };
+		0F16ECEF29DAF706001E7750 /* MaUtilKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F16ECED29DAF706001E7750 /* MaUtilKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F19A4FB29B1FECF00095E27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F19A4FA29B1FECF00095E27 /* AppDelegate.swift */; };
 		0F19A4FD29B1FECF00095E27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F19A4FC29B1FECF00095E27 /* SceneDelegate.swift */; };
 		0F19A4FF29B1FECF00095E27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F19A4FE29B1FECF00095E27 /* ViewController.swift */; };
@@ -64,8 +64,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0F11078229BF54D300B93A12 /* MaUtilFrame.framework in Embed Frameworks */,
 				0FAB9C4B29BEFB27009EF82C /* MaCommonKit.framework in Embed Frameworks */,
+				0F16ECEF29DAF706001E7750 /* MaUtilKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,8 +73,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0F11078029BF54D300B93A12 /* MaUtilFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaUtilFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F11078329BF552200B93A12 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0F16ECED29DAF706001E7750 /* MaUtilKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MaUtilKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F19A4F729B1FECF00095E27 /* IosScaffold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IosScaffold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F19A4FA29B1FECF00095E27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F19A4FC29B1FECF00095E27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FAB9C4A29BEFB27009EF82C /* MaCommonKit.framework in Frameworks */,
-				0F11078129BF54D300B93A12 /* MaUtilFrame.framework in Frameworks */,
 				55CBBBEF77CA88B8E4AADAC8 /* Pods_IosScaffold.framework in Frameworks */,
+				0F16ECEE29DAF706001E7750 /* MaUtilKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +254,7 @@
 		3301435E9D0450D31709A5C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0F11078029BF54D300B93A12 /* MaUtilFrame.framework */,
+				0F16ECED29DAF706001E7750 /* MaUtilKit.framework */,
 				76252448950D6AB819D4FD1E /* Pods_IosScaffold.framework */,
 				AE407C8BD5BC0F894DF12CF8 /* Pods_IosScaffoldTests.framework */,
 			);

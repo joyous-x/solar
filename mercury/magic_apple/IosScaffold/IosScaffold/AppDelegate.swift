@@ -1,5 +1,5 @@
 import UIKit
-import MaUtilFrame
+import MaUtilKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// - Note: 新用户
         let installTime = LocalStorage.shared().getInt64(key: SpKey.SP_KEY_APP_FIRST_INSTALL_TIME, defValue: -1)
         if installTime < 0 {
-            LocalStorage.shared().putInt64(key: SpKey.SP_KEY_APP_FIRST_INSTALL_TIME, value: Date().timeStamp)
+            LocalStorage.shared().putInt64(key: SpKey.SP_KEY_APP_FIRST_INSTALL_TIME, value: Date().timestamp)
         }
         return true
     }
