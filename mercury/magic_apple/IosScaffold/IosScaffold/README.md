@@ -11,5 +11,5 @@
                  Path: $(SRCROOT)/../Shared
                  通过 + 号，添加编译产物目录 "Pod-xxx" ```
     + 打开用于开发的 xcodeproj 工程文件，并在其中引入 拷贝到 Shared 目录的 "Pod-xxx"
-        + TARGET -> General -> Frameworks and Libraries -> Add Others
+        + ```TARGET -> General -> Frameworks and Libraries -> Add Others```
     + 待 MaUtilKit 开发完成，再将 IosScaffold 对其的引用方式更改为标准第三方 frame 引用即可

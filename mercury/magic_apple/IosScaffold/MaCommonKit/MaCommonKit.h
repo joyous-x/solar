@@ -1,10 +1,3 @@
-//
-//  MaCommonKit.h
-//  MaCommonKit
-//
-//  Created by jiao on 2023/3/13.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for MaCommonKit.

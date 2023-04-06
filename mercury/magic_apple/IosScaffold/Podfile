@@ -20,8 +20,12 @@ target 'IosScaffold' do
     # Pods for testing
   end
 
-  target 'IosScaffoldUITests' do
-    # Pods for testing
-  end
+end
+
+target 'MaCommonKit' do
+  use_frameworks!
+
+  pod 'HandyJSON', '~> 5.0.2'
+  pod 'MMKV', '1.2.2'
 
 end
