@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{6a98e705-eb53-4051-8b78-64f727fc4647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\file">
+      <UniqueIdentifier>{1a4532be-b631-4ecb-bd85-0f08d410c6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\utils">
+      <UniqueIdentifier>{5942749c-16c7-48fd-9c57-c75e95a0c2d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\office">
+      <UniqueIdentifier>{12ddb808-9028-48dd-ba33-1e27ffa9e2a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\3rds">
+      <UniqueIdentifier>{02732ef3-e707-4b49-ac02-aa9a8ec5e481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\3rds\zip">
+      <UniqueIdentifier>{5e46e86d-98c4-45d2-a151-2f3c8a20d497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="filetype">
+      <UniqueIdentifier>{021fb424-9efc-4467-a242-f931e662f26d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="filetyper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="checker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\filetype\detector.cpp">
+      <Filter>filetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\3rds\crc16.cpp">
+      <Filter>common\3rds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\3rds\zip\zip.c">
+      <Filter>common\3rds\zip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\file\filetype.cpp">
+      <Filter>common\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\file\simplefile.cpp">
+      <Filter>common\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\office\ole_utils.cpp">
+      <Filter>common\office</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\office\ole.cpp">
+      <Filter>common\office</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\file\filetype_text.cpp">
+      <Filter>common\file</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\utils\bitmap.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\codepage.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\context.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\errors.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\hash.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\scope_guard.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\utils\utils.h">
+      <Filter>common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="helper.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\filetype\npe.h">
+      <Filter>filetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\filetype\detector.h">
+      <Filter>filetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\3rds\crc16.h">
+      <Filter>common\3rds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\3rds\json.h">
+      <Filter>common\3rds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\3rds\zip\miniz.h">
+      <Filter>common\3rds\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\3rds\zip\zip.h">
+      <Filter>common\3rds\zip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\file\filetype.h">
+      <Filter>common\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\file\filetype_define.h">
+      <Filter>common\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\file\simplefile.h">
+      <Filter>common\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\file\types.h">
+      <Filter>common\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\office\ole.h">
+      <Filter>common\office</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\office\ole_utils.h">
+      <Filter>common\office</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
