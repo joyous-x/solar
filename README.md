@@ -1,7 +1,7 @@
 # SOLAR
 
 ## 1 Mercury
-- [***Package***](https://github.com/joyous-x/solar/tree/master/mercury/package)
+- [***Package***](https://github.com/joyous-x/mercury)
 
 ## 2 Venus
 - [***C++相关***](https://github.com/joyous-x/solar/tree/master/venus)
@@ -19,11 +19,11 @@
 - [***Go相关***](https://github.com/joyous-x/saturn)
 
 ## 7 Uranus
-- [***the shadow of solar***](https://github.com/joyous-x/solar_shadow/uranus)
+- [***TODO**](https://github.com/joyous-x/solar/tree/master/uranus)
 
 ## 8 Neptune
-- [***杂乱测试***](https://github.com/joyous-x/solar/tree/master/neptune)
+- [***the shadow of solar***](https://github.com/joyous-x/solar_shadow)
 
 ## 9 Pluto
-- [***the shadow of solar***](https://github.com/joyous-x/solar_shadow/pluto)
+- [***the shadow of solar***](https://github.com/joyous-x/solar_shadow)
 
