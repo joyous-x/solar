@@ -1,2 +1,0 @@
-# Readme
-Common/readme.txt
